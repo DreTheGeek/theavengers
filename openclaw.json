@@ -1,0 +1,27 @@
+{
+  "mcp": {
+    "servers": {
+      "supabase": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@modelcontextprotocol/server-supabase"
+        ],
+        "env": {
+          "SUPABASE_URL": "${SUPABASE URL}",
+          "SUPABASE_KEY": "${SUPABASE KEY}"
+        }
+      },
+      "brave-search": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@modelcontextprotocol/server-brave-search"
+        ],
+        "env": {
+          "BRAVE_API_KEY": "${BRAVEAPIKEY}"
+        }
+      }
+    }
+  }
+}
