@@ -10,17 +10,27 @@ import * as tar from "tar";
 
 // Migrate deprecated CLAWDBOT_* env vars → OPENCLAW_* so existing Railway deployments
 // keep working. Users should update their Railway Variables to use the new names.
+// Railway vars are case-sensitive, so we check all env keys case-insensitively
+// to catch clawdbot_gateway_token, CLAWDBOT_GATEWAY_TOKEN, etc.
 for (const suffix of ["PUBLIC_PORT", "STATE_DIR", "WORKSPACE_DIR", "GATEWAY_TOKEN", "CONFIG_PATH"]) {
   const oldKey = `CLAWDBOT_${suffix}`;
   const newKey = `OPENCLAW_${suffix}`;
-  if (process.env[oldKey] && !process.env[newKey]) {
-    process.env[newKey] = process.env[oldKey];
-    // Best-effort compatibility shim for old Railway templates.
-    // Intentionally no warning: Railway templates can still set legacy keys and warnings are noisy.
+
+  // Case-insensitive search: find any env key matching clawdbot_<suffix> regardless of case
+  const matchingKey = Object.keys(process.env).find(
+    (k) => k.toUpperCase() === oldKey
+  );
+
+  if (matchingKey && process.env[matchingKey] && !process.env[newKey]) {
+    process.env[newKey] = process.env[matchingKey];
   }
-  // Avoid forwarding legacy variables into OpenClaw subprocesses.
-  // OpenClaw logs a warning when deprecated CLAWDBOT_* variables are present.
-  delete process.env[oldKey];
+
+  // Clean up all case variants of the old key
+  for (const k of Object.keys(process.env)) {
+    if (k.toUpperCase() === oldKey) {
+      delete process.env[k];
+    }
+  }
 }
 
 // Railway injects PORT at runtime and routes traffic to that port.
