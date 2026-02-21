@@ -1,10 +1,15 @@
 # ============================================
 # THE AVENGERS — OpenClaw Gateway
 # ============================================
-# Multi-stage build for a lean, secure image
+# Single-stage build for reliable binary linking
 
-# Stage 1: Install all dependencies
-FROM node:20-slim AS deps
+FROM node:20-slim
+
+# Install curl for health checks and tini for proper signal handling
+RUN apt-get update && apt-get install -y --no-install-recommends \
+      curl \
+      tini \
+    && rm -rf /var/lib/apt/lists/*
 
 # Install OpenClaw and all MCP server packages globally
 # Pre-installing avoids flaky runtime npx downloads
@@ -24,19 +29,6 @@ RUN npm install -g \
       @modelcontextprotocol/server-memory \
       @modelcontextprotocol/server-filesystem \
     && npm cache clean --force
-
-# Stage 2: Production image
-FROM node:20-slim
-
-# Install curl for health checks and tini for proper signal handling
-RUN apt-get update && apt-get install -y --no-install-recommends \
-      curl \
-      tini \
-    && rm -rf /var/lib/apt/lists/*
-
-# Copy global node_modules and binaries from deps stage
-COPY --from=deps /usr/local/lib/node_modules /usr/local/lib/node_modules
-COPY --from=deps /usr/local/bin /usr/local/bin
 
 # Create non-root user for security (don't run as root in production)
 RUN groupadd -r avengers && useradd -r -g avengers -m -s /bin/bash avengers
