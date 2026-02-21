@@ -3,6 +3,7 @@
 -- ============================================
 -- Run this in Supabase SQL Editor to create all tables.
 -- Safe to re-run — uses IF NOT EXISTS everywhere.
+-- Foreign key REFERENCES removed for compatibility with existing tables.
 -- ============================================
 
 -- ──────────────────────────────────────────────
@@ -117,7 +118,7 @@ CREATE TABLE IF NOT EXISTS prospects (
 
 CREATE TABLE IF NOT EXISTS pipeline (
   id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
-  prospect_id UUID REFERENCES prospects(id),
+  prospect_id UUID,
   company_name TEXT NOT NULL,
   stage TEXT DEFAULT 'new_lead' CHECK (stage IN ('new_lead', 'researching', 'qualified', 'proposal_creation', 'proposal_sent', 'follow_up', 'negotiation', 'closed_won', 'closed_lost')),
   deal_value NUMERIC(12,2),
@@ -133,8 +134,8 @@ CREATE TABLE IF NOT EXISTS pipeline (
 
 CREATE TABLE IF NOT EXISTS proposals (
   id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
-  prospect_id UUID REFERENCES prospects(id),
-  pipeline_id UUID REFERENCES pipeline(id),
+  prospect_id UUID,
+  pipeline_id UUID,
   version INTEGER DEFAULT 1,
   title TEXT NOT NULL,
   content TEXT,
@@ -148,8 +149,8 @@ CREATE TABLE IF NOT EXISTS proposals (
 
 CREATE TABLE IF NOT EXISTS deals (
   id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
-  prospect_id UUID REFERENCES prospects(id),
-  pipeline_id UUID REFERENCES pipeline(id),
+  prospect_id UUID,
+  pipeline_id UUID,
   company_name TEXT NOT NULL,
   deal_value NUMERIC(12,2) NOT NULL,
   recurring_value NUMERIC(12,2) DEFAULT 0,
@@ -186,7 +187,7 @@ CREATE TABLE IF NOT EXISTS business_opportunities (
 
 CREATE TABLE IF NOT EXISTS financial_models (
   id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
-  opportunity_id UUID REFERENCES business_opportunities(id),
+  opportunity_id UUID,
   model_name TEXT NOT NULL,
   assumptions JSONB NOT NULL,
   projections JSONB NOT NULL,
@@ -307,7 +308,7 @@ CREATE TABLE IF NOT EXISTS tax_deed_sales (
 
 CREATE TABLE IF NOT EXISTS properties (
   id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
-  auction_id UUID REFERENCES tax_deed_sales(id),
+  auction_id UUID,
   address TEXT NOT NULL,
   city TEXT,
   county TEXT,
@@ -339,7 +340,7 @@ CREATE TABLE IF NOT EXISTS properties (
 
 CREATE TABLE IF NOT EXISTS property_comps (
   id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
-  property_id UUID REFERENCES properties(id),
+  property_id UUID,
   comp_address TEXT NOT NULL,
   sale_price NUMERIC(12,2),
   sale_date DATE,
@@ -353,7 +354,7 @@ CREATE TABLE IF NOT EXISTS property_comps (
 
 CREATE TABLE IF NOT EXISTS portfolio (
   id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
-  property_id UUID REFERENCES properties(id),
+  property_id UUID,
   address TEXT NOT NULL,
   acquisition_price NUMERIC(12,2) NOT NULL,
   acquisition_date DATE,
@@ -433,7 +434,7 @@ CREATE TABLE IF NOT EXISTS suppliers (
 
 CREATE TABLE IF NOT EXISTS ecom_orders (
   id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
-  product_id UUID REFERENCES products(id),
+  product_id UUID,
   shopify_order_id TEXT,
   order_date TIMESTAMPTZ DEFAULT NOW(),
   customer_name TEXT,
@@ -517,7 +518,7 @@ CREATE TABLE IF NOT EXISTS content_calendar (
 
 CREATE TABLE IF NOT EXISTS content_performance (
   id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
-  content_id UUID REFERENCES content_calendar(id),
+  content_id UUID,
   platform TEXT NOT NULL,
   post_url TEXT,
   views INTEGER DEFAULT 0,
