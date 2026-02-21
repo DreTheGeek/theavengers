@@ -1,14 +1,14 @@
 -- ============================================
--- THE AVENGERS — Complete Supabase Schema
+-- THE AVENGERS - Complete Supabase Schema
 -- ============================================
 -- Run this in Supabase SQL Editor to create all tables.
--- Safe to re-run — uses IF NOT EXISTS everywhere.
+-- Safe to re-run - uses IF NOT EXISTS everywhere.
 -- Foreign key REFERENCES removed for compatibility with existing tables.
 -- ============================================
 
--- ──────────────────────────────────────────────
--- CORE / OPTIMUS PRIME — Bot Coordination
--- ──────────────────────────────────────────────
+-- -----------------------------------------------
+-- CORE / OPTIMUS PRIME - Bot Coordination
+-- -----------------------------------------------
 
 CREATE TABLE IF NOT EXISTS bot_tasks (
   id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
@@ -48,9 +48,9 @@ CREATE TABLE IF NOT EXISTS daily_metrics (
   created_at TIMESTAMPTZ DEFAULT NOW()
 );
 
--- ──────────────────────────────────────────────
--- RHIANNA RESEARCH — Intelligence Database
--- ──────────────────────────────────────────────
+-- -----------------------------------------------
+-- RHIANNA RESEARCH - Intelligence Database
+-- -----------------------------------------------
 
 CREATE TABLE IF NOT EXISTS research_findings (
   id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
@@ -93,9 +93,9 @@ CREATE TABLE IF NOT EXISTS market_trends (
   created_at TIMESTAMPTZ DEFAULT NOW()
 );
 
--- ──────────────────────────────────────────────
--- AVA ANALYST — Sales Pipeline
--- ──────────────────────────────────────────────
+-- -----------------------------------------------
+-- AVA ANALYST - Sales Pipeline
+-- -----------------------------------------------
 
 CREATE TABLE IF NOT EXISTS prospects (
   id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
@@ -162,9 +162,9 @@ CREATE TABLE IF NOT EXISTS deals (
   created_at TIMESTAMPTZ DEFAULT NOW()
 );
 
--- ──────────────────────────────────────────────
--- BENNY BUILDER — Business Opportunities
--- ──────────────────────────────────────────────
+-- -----------------------------------------------
+-- BENNY BUILDER - Business Opportunities
+-- -----------------------------------------------
 
 CREATE TABLE IF NOT EXISTS business_opportunities (
   id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
@@ -196,9 +196,9 @@ CREATE TABLE IF NOT EXISTS financial_models (
   created_at TIMESTAMPTZ DEFAULT NOW()
 );
 
--- ──────────────────────────────────────────────
--- TAMMY TRADER — Trading Database
--- ──────────────────────────────────────────────
+-- -----------------------------------------------
+-- TAMMY TRADER - Trading Database
+-- -----------------------------------------------
 
 CREATE TABLE IF NOT EXISTS trades (
   id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
@@ -286,9 +286,9 @@ CREATE TABLE IF NOT EXISTS market_analysis (
   created_at TIMESTAMPTZ DEFAULT NOW()
 );
 
--- ──────────────────────────────────────────────
--- RANDY REALTY — Property Database
--- ──────────────────────────────────────────────
+-- -----------------------------------------------
+-- RANDY REALTY - Property Database
+-- -----------------------------------------------
 
 CREATE TABLE IF NOT EXISTS tax_deed_sales (
   id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
@@ -372,9 +372,9 @@ CREATE TABLE IF NOT EXISTS portfolio (
   created_at TIMESTAMPTZ DEFAULT NOW()
 );
 
--- ──────────────────────────────────────────────
--- DEONDRE DROPSHIPPING — E-Commerce Database
--- ──────────────────────────────────────────────
+-- -----------------------------------------------
+-- DEONDRE DROPSHIPPING - E-Commerce Database
+-- -----------------------------------------------
 
 CREATE TABLE IF NOT EXISTS products (
   id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
@@ -490,9 +490,9 @@ CREATE TABLE IF NOT EXISTS competitor_stores (
   created_at TIMESTAMPTZ DEFAULT NOW()
 );
 
--- ──────────────────────────────────────────────
--- CARTER CONTENT — Content Operations
--- ──────────────────────────────────────────────
+-- -----------------------------------------------
+-- CARTER CONTENT - Content Operations
+-- -----------------------------------------------
 
 CREATE TABLE IF NOT EXISTS content_calendar (
   id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
@@ -578,9 +578,9 @@ CREATE TABLE IF NOT EXISTS social_accounts (
   updated_at TIMESTAMPTZ DEFAULT NOW()
 );
 
--- ──────────────────────────────────────────────
--- CLEAH CODING — Development Tracking
--- ──────────────────────────────────────────────
+-- -----------------------------------------------
+-- CLEAH CODING - Development Tracking
+-- -----------------------------------------------
 
 CREATE TABLE IF NOT EXISTS dev_tasks (
   id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
@@ -638,10 +638,10 @@ CREATE TABLE IF NOT EXISTS tech_decisions (
   created_at TIMESTAMPTZ DEFAULT NOW()
 );
 
--- ──────────────────────────────────────────────
--- INDEXES — Fast queries for all bots
+-- -----------------------------------------------
+-- INDEXES - Fast queries for all bots
 -- Each wrapped in DO block so mismatched columns on existing tables are skipped safely.
--- ──────────────────────────────────────────────
+-- -----------------------------------------------
 
 DO $$ BEGIN CREATE INDEX IF NOT EXISTS idx_bot_tasks_assigned ON bot_tasks(assigned_to, status); EXCEPTION WHEN OTHERS THEN NULL; END $$;
 DO $$ BEGIN CREATE INDEX IF NOT EXISTS idx_bot_tasks_status ON bot_tasks(status); EXCEPTION WHEN OTHERS THEN NULL; END $$;
@@ -671,11 +671,11 @@ DO $$ BEGIN CREATE INDEX IF NOT EXISTS idx_dev_tasks_status ON dev_tasks(status,
 DO $$ BEGIN CREATE INDEX IF NOT EXISTS idx_bug_reports_severity ON bug_reports(severity, status); EXCEPTION WHEN OTHERS THEN NULL; END $$;
 DO $$ BEGIN CREATE INDEX IF NOT EXISTS idx_deployments_service ON deployments(service, deployed_at DESC); EXCEPTION WHEN OTHERS THEN NULL; END $$;
 
--- ──────────────────────────────────────────────
+-- -----------------------------------------------
 -- ENABLE ROW LEVEL SECURITY (RLS)
 -- Each wrapped in DO block so existing tables with RLS already enabled are skipped.
 -- Service role key bypasses RLS, so bots have full access.
--- ──────────────────────────────────────────────
+-- -----------------------------------------------
 
 DO $$ BEGIN ALTER TABLE bot_tasks ENABLE ROW LEVEL SECURITY; EXCEPTION WHEN OTHERS THEN NULL; END $$;
 DO $$ BEGIN ALTER TABLE bot_activity_log ENABLE ROW LEVEL SECURITY; EXCEPTION WHEN OTHERS THEN NULL; END $$;
@@ -714,5 +714,5 @@ DO $$ BEGIN ALTER TABLE deployments ENABLE ROW LEVEL SECURITY; EXCEPTION WHEN OT
 DO $$ BEGIN ALTER TABLE tech_decisions ENABLE ROW LEVEL SECURITY; EXCEPTION WHEN OTHERS THEN NULL; END $$;
 
 -- ============================================
--- DONE — 33 tables, 28 indexes, RLS enabled
+-- DONE - 33 tables, 28 indexes, RLS enabled
 -- ============================================
