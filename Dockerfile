@@ -12,29 +12,28 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 # Install OpenClaw and all MCP server packages globally
-# Pre-installing avoids flaky runtime npx downloads
-RUN npm install -g \
-      openclaw \
-      @supabase/mcp-server-supabase \
-      @brave/brave-search-mcp-server \
-      serper-search-scrape-mcp-server \
-      firecrawl-mcp \
-      google-maps-mcp-server \
-      @modelcontextprotocol/server-github \
-      replicate-mcp \
-      resend-mcp \
-      twitter-mcp-server \
-      mcp-newsapi \
-      @modelcontextprotocol/server-sequential-thinking \
-      @modelcontextprotocol/server-memory \
-      @modelcontextprotocol/server-filesystem \
+# Using @latest to bust Docker layer cache and ensure current version
+RUN npm install -g --prefer-online \
+      openclaw@latest \
+      @supabase/mcp-server-supabase@latest \
+      @brave/brave-search-mcp-server@latest \
+      serper-search-scrape-mcp-server@latest \
+      firecrawl-mcp@latest \
+      google-maps-mcp-server@latest \
+      @modelcontextprotocol/server-github@latest \
+      replicate-mcp@latest \
+      resend-mcp@latest \
+      twitter-mcp-server@latest \
+      mcp-newsapi@latest \
+      @modelcontextprotocol/server-sequential-thinking@latest \
+      @modelcontextprotocol/server-memory@latest \
+      @modelcontextprotocol/server-filesystem@latest \
     && npm cache clean --force
 
-# Verify openclaw binary is installed and in PATH (fail build early if not)
-RUN echo "Global npm bin: $(npm bin -g)" \
-    && echo "openclaw location: $(which openclaw 2>/dev/null || echo 'NOT IN PATH')" \
-    && ls -la /usr/local/bin/openclaw 2>/dev/null || true \
-    && ls -la $(npm root -g)/openclaw/ | head -5
+# Verify openclaw binary is installed (fail build if missing)
+RUN which openclaw && openclaw --version || \
+    (echo "FATAL: openclaw binary not found after install" && \
+     npm list -g openclaw && exit 1)
 
 # Create non-root user for security (don't run as root in production)
 RUN groupadd -r avengers && useradd -r -g avengers -m -s /bin/bash avengers
