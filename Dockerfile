@@ -14,8 +14,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 # Force git to use HTTPS instead of SSH (no SSH keys in Docker build)
+# Must use --add for the second value to avoid overwriting the first
 RUN git config --global url."https://github.com/".insteadOf "ssh://git@github.com/" \
-    && git config --global url."https://github.com/".insteadOf "git@github.com:"
+    && git config --global --add url."https://github.com/".insteadOf "git@github.com:"
 
 # Install OpenClaw and all MCP server packages globally
 # Using @latest to bust Docker layer cache and ensure current version
