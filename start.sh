@@ -133,9 +133,6 @@ chmod 700 /app/data 2>/dev/null || true
 # Set max old space to 75% of available memory (Railway default is 512MB)
 export NODE_OPTIONS="${NODE_OPTIONS:---max-old-space-size=384}"
 
-# Disable Node.js inspector in production (security)
-export NODE_OPTIONS="$NODE_OPTIONS --disallow-code-generation-from-strings"
-
 echo "[preflight] All checks passed."
 echo "[startup]   Starting OpenClaw gateway on port $PORT with 9 bots..."
 echo "[startup]   Process running as user: $(whoami)"
