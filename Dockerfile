@@ -10,18 +10,17 @@ FROM node:20-slim AS deps
 # Pre-installing avoids flaky runtime npx downloads
 RUN npm install -g \
       openclaw \
-      @modelcontextprotocol/server-supabase \
-      @modelcontextprotocol/server-brave-search \
+      @supabase/mcp-server-supabase \
+      @brave/brave-search-mcp-server \
       serper-search-scrape-mcp-server \
       firecrawl-mcp \
-      @modelcontextprotocol/server-google-maps \
+      google-maps-mcp-server \
       @modelcontextprotocol/server-github \
       replicate-mcp \
       resend-mcp \
       twitter-mcp-server \
       mcp-newsapi \
       @modelcontextprotocol/server-sequential-thinking \
-      @modelcontextprotocol/server-fetch \
       @modelcontextprotocol/server-memory \
       @modelcontextprotocol/server-filesystem \
     && npm cache clean --force

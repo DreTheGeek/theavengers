@@ -249,7 +249,7 @@
         }
       },
       "brave-search": {
-        "command": "mcp-server-brave-search",
+        "command": "brave-search-mcp-server",
         "args": [],
         "env": {
           "BRAVE_API_KEY": "${BRAVE_API_KEY}"
@@ -270,7 +270,7 @@
         }
       },
       "google-maps": {
-        "command": "mcp-server-google-maps",
+        "command": "google-maps-mcp-server",
         "args": [],
         "env": {
           "GOOGLE_MAPS_API_KEY": "${GOOGLE_MAPS_API_KEY}"
@@ -316,10 +316,6 @@
       },
       "sequential-thinking": {
         "command": "mcp-server-sequential-thinking",
-        "args": []
-      },
-      "fetch": {
-        "command": "mcp-server-fetch",
         "args": []
       },
       "memory": {
