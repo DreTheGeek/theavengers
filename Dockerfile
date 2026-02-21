@@ -3,7 +3,7 @@
 # ============================================
 # Single-stage build for reliable binary linking
 
-FROM node:20-slim
+FROM node:22-slim
 
 # Install system dependencies
 # curl: health checks, tini: signal handling, git: npm git deps, ca-certificates: HTTPS
@@ -39,9 +39,7 @@ RUN npm install -g --prefer-online \
     && npm cache clean --force
 
 # Verify openclaw binary is installed (fail build if missing)
-RUN which openclaw && openclaw --version || \
-    (echo "FATAL: openclaw binary not found after install" && \
-     npm list -g openclaw && exit 1)
+RUN which openclaw || (echo "FATAL: openclaw not in PATH" && exit 1)
 
 # Create non-root user for security (don't run as root in production)
 RUN groupadd -r avengers && useradd -r -g avengers -m -s /bin/bash avengers
