@@ -139,18 +139,25 @@ export NODE_OPTIONS="$NODE_OPTIONS --disallow-code-generation-from-strings"
 echo "[preflight] All checks passed."
 echo "[startup]   Starting OpenClaw gateway on port $PORT with 9 bots..."
 echo "[startup]   Process running as user: $(whoami)"
+echo "[startup]   PATH=$PATH"
 
-# ------- Graceful shutdown -------
-cleanup() {
-  echo "[shutdown] Received signal, shutting down gracefully..."
-  kill -TERM "$CHILD_PID" 2>/dev/null
-  wait "$CHILD_PID" 2>/dev/null
-  echo "[shutdown] Done."
-  exit 0
-}
-trap cleanup SIGTERM SIGINT SIGQUIT
-
-# ------- Launch -------
-openclaw gateway --port "$PORT" &
-CHILD_PID=$!
-wait "$CHILD_PID"
+# ------- Resolve openclaw binary -------
+if command -v openclaw &>/dev/null; then
+  echo "[startup]   Found openclaw at: $(which openclaw)"
+  exec openclaw gateway --port "$PORT"
+else
+  # Fallback: run the JS entry point directly via node
+  OPENCLAW_JS="$(npm root -g)/openclaw/openclaw.mjs"
+  if [ -f "$OPENCLAW_JS" ]; then
+    echo "[startup]   openclaw not in PATH, using direct node execution: $OPENCLAW_JS"
+    exec node "$OPENCLAW_JS" gateway --port "$PORT"
+  else
+    echo "[startup]   FATAL: Cannot find openclaw binary or module"
+    echo "[startup]   PATH=$PATH"
+    echo "[startup]   npm global root: $(npm root -g)"
+    echo "[startup]   Global packages:"
+    npm list -g --depth=0
+    ls -la /usr/local/bin/open* 2>/dev/null || echo "[startup]   No openclaw binaries in /usr/local/bin/"
+    exit 1
+  fi
+fi

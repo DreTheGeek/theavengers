@@ -30,6 +30,12 @@ RUN npm install -g \
       @modelcontextprotocol/server-filesystem \
     && npm cache clean --force
 
+# Verify openclaw binary is installed and in PATH (fail build early if not)
+RUN echo "Global npm bin: $(npm bin -g)" \
+    && echo "openclaw location: $(which openclaw 2>/dev/null || echo 'NOT IN PATH')" \
+    && ls -la /usr/local/bin/openclaw 2>/dev/null || true \
+    && ls -la $(npm root -g)/openclaw/ | head -5
+
 # Create non-root user for security (don't run as root in production)
 RUN groupadd -r avengers && useradd -r -g avengers -m -s /bin/bash avengers
 
