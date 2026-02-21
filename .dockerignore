@@ -1,0 +1,47 @@
+# ============================================
+# THE AVENGERS — .dockerignore
+# Keep the Docker build context clean and secure
+# ============================================
+
+# Git
+.git
+.gitignore
+
+# Secrets — NEVER include in Docker image
+.env
+.env.*
+*.key
+*.pem
+secrets/
+credentials/
+
+# Documentation (not needed at runtime)
+README.md
+PLAN.md
+LICENSE
+CHANGELOG.md
+
+# Development
+node_modules/
+.vscode/
+.idea/
+.claude/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Runtime data (created at runtime, not build time)
+data/
+
+# Supabase schema (not needed at runtime)
+supabase/
+
+# Docker files (prevent recursive context)
+Dockerfile
+docker-compose*.yml
+.dockerignore

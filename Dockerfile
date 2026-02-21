@@ -1,7 +1,7 @@
 # ============================================
 # THE AVENGERS — OpenClaw Gateway
 # ============================================
-# Multi-stage build for a lean, reliable image
+# Multi-stage build for a lean, secure image
 
 # Stage 1: Install all dependencies
 FROM node:20-slim AS deps
@@ -39,23 +39,33 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 COPY --from=deps /usr/local/lib/node_modules /usr/local/lib/node_modules
 COPY --from=deps /usr/local/bin /usr/local/bin
 
+# Create non-root user for security (don't run as root in production)
+RUN groupadd -r avengers && useradd -r -g avengers -m -s /bin/bash avengers
+
 WORKDIR /app
 
-# Create required directories
-RUN mkdir -p /root/.openclaw /app/workspaces /app/cron /app/data
+# Create required directories with proper ownership
+RUN mkdir -p /home/avengers/.openclaw /app/workspaces /app/cron /app/data \
+    && chown -R avengers:avengers /app /home/avengers
 
-# Copy configuration
-COPY openclaw.json /root/.openclaw/openclaw.json
+# Copy configuration (owned by non-root user)
+COPY --chown=avengers:avengers openclaw.json /home/avengers/.openclaw/openclaw.json
 
 # Copy workspace directories (bot persona files)
-COPY workspaces/ /app/workspaces/
+COPY --chown=avengers:avengers workspaces/ /app/workspaces/
 
 # Copy cron job definitions
-COPY cron/ /app/cron/
+COPY --chown=avengers:avengers cron/ /app/cron/
 
 # Copy startup script
-COPY start.sh /app/start.sh
+COPY --chown=avengers:avengers start.sh /app/start.sh
 RUN chmod +x /app/start.sh
+
+# Make workspace files read-only (bots should not modify their own persona files)
+RUN find /app/workspaces -name "*.md" -exec chmod 444 {} \;
+
+# Switch to non-root user
+USER avengers
 
 # Health check — Railway uses this to know if the service is alive
 HEALTHCHECK --interval=30s --timeout=5s --start-period=15s --retries=3 \
