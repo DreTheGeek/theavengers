@@ -640,77 +640,78 @@ CREATE TABLE IF NOT EXISTS tech_decisions (
 
 -- ──────────────────────────────────────────────
 -- INDEXES — Fast queries for all bots
+-- Each wrapped in DO block so mismatched columns on existing tables are skipped safely.
 -- ──────────────────────────────────────────────
 
-CREATE INDEX IF NOT EXISTS idx_bot_tasks_assigned ON bot_tasks(assigned_to, status);
-CREATE INDEX IF NOT EXISTS idx_bot_tasks_status ON bot_tasks(status);
-CREATE INDEX IF NOT EXISTS idx_bot_activity_bot ON bot_activity_log(bot_id, created_at DESC);
-CREATE INDEX IF NOT EXISTS idx_daily_metrics_date ON daily_metrics(date DESC);
-CREATE INDEX IF NOT EXISTS idx_research_category ON research_findings(category, created_at DESC);
-CREATE INDEX IF NOT EXISTS idx_research_relevance ON research_findings(relevance);
-CREATE INDEX IF NOT EXISTS idx_prospects_status ON prospects(status);
-CREATE INDEX IF NOT EXISTS idx_pipeline_stage ON pipeline(stage);
-CREATE INDEX IF NOT EXISTS idx_proposals_status ON proposals(status);
-CREATE INDEX IF NOT EXISTS idx_trades_status ON trades(status, entry_date DESC);
-CREATE INDEX IF NOT EXISTS idx_trades_asset ON trades(asset, asset_class);
-CREATE INDEX IF NOT EXISTS idx_positions_asset ON positions(asset);
-CREATE INDEX IF NOT EXISTS idx_performance_period ON performance_metrics(period, date DESC);
-CREATE INDEX IF NOT EXISTS idx_properties_status ON properties(status, recommendation);
-CREATE INDEX IF NOT EXISTS idx_properties_state ON properties(state, county);
-CREATE INDEX IF NOT EXISTS idx_tax_deeds_date ON tax_deed_sales(auction_date);
-CREATE INDEX IF NOT EXISTS idx_products_status ON products(status);
-CREATE INDEX IF NOT EXISTS idx_products_margin ON products(margin_pct DESC);
-CREATE INDEX IF NOT EXISTS idx_ecom_orders_date ON ecom_orders(order_date DESC);
-CREATE INDEX IF NOT EXISTS idx_ecom_metrics_date ON daily_ecom_metrics(date DESC);
-CREATE INDEX IF NOT EXISTS idx_content_calendar_schedule ON content_calendar(scheduled_time, status);
-CREATE INDEX IF NOT EXISTS idx_content_calendar_platform ON content_calendar(platform, status);
-CREATE INDEX IF NOT EXISTS idx_content_performance_platform ON content_performance(platform, measured_at DESC);
-CREATE INDEX IF NOT EXISTS idx_trending_content_status ON trending_content(status, platform);
-CREATE INDEX IF NOT EXISTS idx_dev_tasks_status ON dev_tasks(status, priority);
-CREATE INDEX IF NOT EXISTS idx_bug_reports_severity ON bug_reports(severity, status);
-CREATE INDEX IF NOT EXISTS idx_deployments_service ON deployments(service, deployed_at DESC);
+DO $$ BEGIN CREATE INDEX IF NOT EXISTS idx_bot_tasks_assigned ON bot_tasks(assigned_to, status); EXCEPTION WHEN OTHERS THEN NULL; END $$;
+DO $$ BEGIN CREATE INDEX IF NOT EXISTS idx_bot_tasks_status ON bot_tasks(status); EXCEPTION WHEN OTHERS THEN NULL; END $$;
+DO $$ BEGIN CREATE INDEX IF NOT EXISTS idx_bot_activity_bot ON bot_activity_log(bot_id, created_at DESC); EXCEPTION WHEN OTHERS THEN NULL; END $$;
+DO $$ BEGIN CREATE INDEX IF NOT EXISTS idx_daily_metrics_date ON daily_metrics(date DESC); EXCEPTION WHEN OTHERS THEN NULL; END $$;
+DO $$ BEGIN CREATE INDEX IF NOT EXISTS idx_research_category ON research_findings(category, created_at DESC); EXCEPTION WHEN OTHERS THEN NULL; END $$;
+DO $$ BEGIN CREATE INDEX IF NOT EXISTS idx_research_relevance ON research_findings(relevance); EXCEPTION WHEN OTHERS THEN NULL; END $$;
+DO $$ BEGIN CREATE INDEX IF NOT EXISTS idx_prospects_status ON prospects(status); EXCEPTION WHEN OTHERS THEN NULL; END $$;
+DO $$ BEGIN CREATE INDEX IF NOT EXISTS idx_pipeline_stage ON pipeline(stage); EXCEPTION WHEN OTHERS THEN NULL; END $$;
+DO $$ BEGIN CREATE INDEX IF NOT EXISTS idx_proposals_status ON proposals(status); EXCEPTION WHEN OTHERS THEN NULL; END $$;
+DO $$ BEGIN CREATE INDEX IF NOT EXISTS idx_trades_status ON trades(status, entry_date DESC); EXCEPTION WHEN OTHERS THEN NULL; END $$;
+DO $$ BEGIN CREATE INDEX IF NOT EXISTS idx_trades_asset ON trades(asset, asset_class); EXCEPTION WHEN OTHERS THEN NULL; END $$;
+DO $$ BEGIN CREATE INDEX IF NOT EXISTS idx_positions_asset ON positions(asset); EXCEPTION WHEN OTHERS THEN NULL; END $$;
+DO $$ BEGIN CREATE INDEX IF NOT EXISTS idx_performance_period ON performance_metrics(period, date DESC); EXCEPTION WHEN OTHERS THEN NULL; END $$;
+DO $$ BEGIN CREATE INDEX IF NOT EXISTS idx_properties_status ON properties(status, recommendation); EXCEPTION WHEN OTHERS THEN NULL; END $$;
+DO $$ BEGIN CREATE INDEX IF NOT EXISTS idx_properties_state ON properties(state, county); EXCEPTION WHEN OTHERS THEN NULL; END $$;
+DO $$ BEGIN CREATE INDEX IF NOT EXISTS idx_tax_deeds_date ON tax_deed_sales(auction_date); EXCEPTION WHEN OTHERS THEN NULL; END $$;
+DO $$ BEGIN CREATE INDEX IF NOT EXISTS idx_products_status ON products(status); EXCEPTION WHEN OTHERS THEN NULL; END $$;
+DO $$ BEGIN CREATE INDEX IF NOT EXISTS idx_products_margin ON products(margin_pct DESC); EXCEPTION WHEN OTHERS THEN NULL; END $$;
+DO $$ BEGIN CREATE INDEX IF NOT EXISTS idx_ecom_orders_date ON ecom_orders(order_date DESC); EXCEPTION WHEN OTHERS THEN NULL; END $$;
+DO $$ BEGIN CREATE INDEX IF NOT EXISTS idx_ecom_metrics_date ON daily_ecom_metrics(date DESC); EXCEPTION WHEN OTHERS THEN NULL; END $$;
+DO $$ BEGIN CREATE INDEX IF NOT EXISTS idx_content_calendar_schedule ON content_calendar(scheduled_time, status); EXCEPTION WHEN OTHERS THEN NULL; END $$;
+DO $$ BEGIN CREATE INDEX IF NOT EXISTS idx_content_calendar_platform ON content_calendar(platform, status); EXCEPTION WHEN OTHERS THEN NULL; END $$;
+DO $$ BEGIN CREATE INDEX IF NOT EXISTS idx_content_performance_platform ON content_performance(platform, measured_at DESC); EXCEPTION WHEN OTHERS THEN NULL; END $$;
+DO $$ BEGIN CREATE INDEX IF NOT EXISTS idx_trending_content_status ON trending_content(status, platform); EXCEPTION WHEN OTHERS THEN NULL; END $$;
+DO $$ BEGIN CREATE INDEX IF NOT EXISTS idx_dev_tasks_status ON dev_tasks(status, priority); EXCEPTION WHEN OTHERS THEN NULL; END $$;
+DO $$ BEGIN CREATE INDEX IF NOT EXISTS idx_bug_reports_severity ON bug_reports(severity, status); EXCEPTION WHEN OTHERS THEN NULL; END $$;
+DO $$ BEGIN CREATE INDEX IF NOT EXISTS idx_deployments_service ON deployments(service, deployed_at DESC); EXCEPTION WHEN OTHERS THEN NULL; END $$;
 
 -- ──────────────────────────────────────────────
 -- ENABLE ROW LEVEL SECURITY (RLS)
--- ──────────────────────────────────────────────
+-- Each wrapped in DO block so existing tables with RLS already enabled are skipped.
 -- Service role key bypasses RLS, so bots have full access.
--- If you add a frontend later, add policies per table.
+-- ──────────────────────────────────────────────
 
-ALTER TABLE bot_tasks ENABLE ROW LEVEL SECURITY;
-ALTER TABLE bot_activity_log ENABLE ROW LEVEL SECURITY;
-ALTER TABLE daily_metrics ENABLE ROW LEVEL SECURITY;
-ALTER TABLE research_findings ENABLE ROW LEVEL SECURITY;
-ALTER TABLE competitive_intel ENABLE ROW LEVEL SECURITY;
-ALTER TABLE market_trends ENABLE ROW LEVEL SECURITY;
-ALTER TABLE prospects ENABLE ROW LEVEL SECURITY;
-ALTER TABLE pipeline ENABLE ROW LEVEL SECURITY;
-ALTER TABLE proposals ENABLE ROW LEVEL SECURITY;
-ALTER TABLE deals ENABLE ROW LEVEL SECURITY;
-ALTER TABLE business_opportunities ENABLE ROW LEVEL SECURITY;
-ALTER TABLE financial_models ENABLE ROW LEVEL SECURITY;
-ALTER TABLE trades ENABLE ROW LEVEL SECURITY;
-ALTER TABLE positions ENABLE ROW LEVEL SECURITY;
-ALTER TABLE performance_metrics ENABLE ROW LEVEL SECURITY;
-ALTER TABLE sports_bets ENABLE ROW LEVEL SECURITY;
-ALTER TABLE market_analysis ENABLE ROW LEVEL SECURITY;
-ALTER TABLE tax_deed_sales ENABLE ROW LEVEL SECURITY;
-ALTER TABLE properties ENABLE ROW LEVEL SECURITY;
-ALTER TABLE property_comps ENABLE ROW LEVEL SECURITY;
-ALTER TABLE portfolio ENABLE ROW LEVEL SECURITY;
-ALTER TABLE products ENABLE ROW LEVEL SECURITY;
-ALTER TABLE suppliers ENABLE ROW LEVEL SECURITY;
-ALTER TABLE ecom_orders ENABLE ROW LEVEL SECURITY;
-ALTER TABLE daily_ecom_metrics ENABLE ROW LEVEL SECURITY;
-ALTER TABLE competitor_stores ENABLE ROW LEVEL SECURITY;
-ALTER TABLE content_calendar ENABLE ROW LEVEL SECURITY;
-ALTER TABLE content_performance ENABLE ROW LEVEL SECURITY;
-ALTER TABLE content_assets ENABLE ROW LEVEL SECURITY;
-ALTER TABLE trending_content ENABLE ROW LEVEL SECURITY;
-ALTER TABLE social_accounts ENABLE ROW LEVEL SECURITY;
-ALTER TABLE dev_tasks ENABLE ROW LEVEL SECURITY;
-ALTER TABLE bug_reports ENABLE ROW LEVEL SECURITY;
-ALTER TABLE deployments ENABLE ROW LEVEL SECURITY;
-ALTER TABLE tech_decisions ENABLE ROW LEVEL SECURITY;
+DO $$ BEGIN ALTER TABLE bot_tasks ENABLE ROW LEVEL SECURITY; EXCEPTION WHEN OTHERS THEN NULL; END $$;
+DO $$ BEGIN ALTER TABLE bot_activity_log ENABLE ROW LEVEL SECURITY; EXCEPTION WHEN OTHERS THEN NULL; END $$;
+DO $$ BEGIN ALTER TABLE daily_metrics ENABLE ROW LEVEL SECURITY; EXCEPTION WHEN OTHERS THEN NULL; END $$;
+DO $$ BEGIN ALTER TABLE research_findings ENABLE ROW LEVEL SECURITY; EXCEPTION WHEN OTHERS THEN NULL; END $$;
+DO $$ BEGIN ALTER TABLE competitive_intel ENABLE ROW LEVEL SECURITY; EXCEPTION WHEN OTHERS THEN NULL; END $$;
+DO $$ BEGIN ALTER TABLE market_trends ENABLE ROW LEVEL SECURITY; EXCEPTION WHEN OTHERS THEN NULL; END $$;
+DO $$ BEGIN ALTER TABLE prospects ENABLE ROW LEVEL SECURITY; EXCEPTION WHEN OTHERS THEN NULL; END $$;
+DO $$ BEGIN ALTER TABLE pipeline ENABLE ROW LEVEL SECURITY; EXCEPTION WHEN OTHERS THEN NULL; END $$;
+DO $$ BEGIN ALTER TABLE proposals ENABLE ROW LEVEL SECURITY; EXCEPTION WHEN OTHERS THEN NULL; END $$;
+DO $$ BEGIN ALTER TABLE deals ENABLE ROW LEVEL SECURITY; EXCEPTION WHEN OTHERS THEN NULL; END $$;
+DO $$ BEGIN ALTER TABLE business_opportunities ENABLE ROW LEVEL SECURITY; EXCEPTION WHEN OTHERS THEN NULL; END $$;
+DO $$ BEGIN ALTER TABLE financial_models ENABLE ROW LEVEL SECURITY; EXCEPTION WHEN OTHERS THEN NULL; END $$;
+DO $$ BEGIN ALTER TABLE trades ENABLE ROW LEVEL SECURITY; EXCEPTION WHEN OTHERS THEN NULL; END $$;
+DO $$ BEGIN ALTER TABLE positions ENABLE ROW LEVEL SECURITY; EXCEPTION WHEN OTHERS THEN NULL; END $$;
+DO $$ BEGIN ALTER TABLE performance_metrics ENABLE ROW LEVEL SECURITY; EXCEPTION WHEN OTHERS THEN NULL; END $$;
+DO $$ BEGIN ALTER TABLE sports_bets ENABLE ROW LEVEL SECURITY; EXCEPTION WHEN OTHERS THEN NULL; END $$;
+DO $$ BEGIN ALTER TABLE market_analysis ENABLE ROW LEVEL SECURITY; EXCEPTION WHEN OTHERS THEN NULL; END $$;
+DO $$ BEGIN ALTER TABLE tax_deed_sales ENABLE ROW LEVEL SECURITY; EXCEPTION WHEN OTHERS THEN NULL; END $$;
+DO $$ BEGIN ALTER TABLE properties ENABLE ROW LEVEL SECURITY; EXCEPTION WHEN OTHERS THEN NULL; END $$;
+DO $$ BEGIN ALTER TABLE property_comps ENABLE ROW LEVEL SECURITY; EXCEPTION WHEN OTHERS THEN NULL; END $$;
+DO $$ BEGIN ALTER TABLE portfolio ENABLE ROW LEVEL SECURITY; EXCEPTION WHEN OTHERS THEN NULL; END $$;
+DO $$ BEGIN ALTER TABLE products ENABLE ROW LEVEL SECURITY; EXCEPTION WHEN OTHERS THEN NULL; END $$;
+DO $$ BEGIN ALTER TABLE suppliers ENABLE ROW LEVEL SECURITY; EXCEPTION WHEN OTHERS THEN NULL; END $$;
+DO $$ BEGIN ALTER TABLE ecom_orders ENABLE ROW LEVEL SECURITY; EXCEPTION WHEN OTHERS THEN NULL; END $$;
+DO $$ BEGIN ALTER TABLE daily_ecom_metrics ENABLE ROW LEVEL SECURITY; EXCEPTION WHEN OTHERS THEN NULL; END $$;
+DO $$ BEGIN ALTER TABLE competitor_stores ENABLE ROW LEVEL SECURITY; EXCEPTION WHEN OTHERS THEN NULL; END $$;
+DO $$ BEGIN ALTER TABLE content_calendar ENABLE ROW LEVEL SECURITY; EXCEPTION WHEN OTHERS THEN NULL; END $$;
+DO $$ BEGIN ALTER TABLE content_performance ENABLE ROW LEVEL SECURITY; EXCEPTION WHEN OTHERS THEN NULL; END $$;
+DO $$ BEGIN ALTER TABLE content_assets ENABLE ROW LEVEL SECURITY; EXCEPTION WHEN OTHERS THEN NULL; END $$;
+DO $$ BEGIN ALTER TABLE trending_content ENABLE ROW LEVEL SECURITY; EXCEPTION WHEN OTHERS THEN NULL; END $$;
+DO $$ BEGIN ALTER TABLE social_accounts ENABLE ROW LEVEL SECURITY; EXCEPTION WHEN OTHERS THEN NULL; END $$;
+DO $$ BEGIN ALTER TABLE dev_tasks ENABLE ROW LEVEL SECURITY; EXCEPTION WHEN OTHERS THEN NULL; END $$;
+DO $$ BEGIN ALTER TABLE bug_reports ENABLE ROW LEVEL SECURITY; EXCEPTION WHEN OTHERS THEN NULL; END $$;
+DO $$ BEGIN ALTER TABLE deployments ENABLE ROW LEVEL SECURITY; EXCEPTION WHEN OTHERS THEN NULL; END $$;
+DO $$ BEGIN ALTER TABLE tech_decisions ENABLE ROW LEVEL SECURITY; EXCEPTION WHEN OTHERS THEN NULL; END $$;
 
 -- ============================================
 -- DONE — 33 tables, 28 indexes, RLS enabled
