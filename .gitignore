@@ -14,3 +14,12 @@ logs/
 # OS files
 .DS_Store
 Thumbs.db
+
+# Plan file (local only)
+PLAN.md
+
+# Claude Code
+.claude/
+
+# Runtime data
+data/

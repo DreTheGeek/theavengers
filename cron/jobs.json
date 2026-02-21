@@ -1,0 +1,170 @@
+[
+  {
+    "name": "RhiannaDailyIntelFeed",
+    "schedule": {
+      "kind": "cron",
+      "pattern": "0 6 * * *",
+      "timezone": "America/New_York"
+    },
+    "sessionTarget": "isolated",
+    "agentTurn": "Run your proactive intelligence gathering cycle. Scan for new prospects, market opportunities, competitive threats, and industry trends. Compile all findings into Supabase research_findings and prospects tables. Prepare your daily intelligence feed summary for Optimus Prime's 7am briefing. Focus on: 1) New companies needing AI/automation, 2) Competitive moves, 3) Market trends affecting Kaldr Tech, 4) Any urgent opportunities or threats.",
+    "deliverTo": {
+      "channel": "telegram",
+      "mode": "none"
+    }
+  },
+  {
+    "name": "DeondreProductScan",
+    "schedule": {
+      "kind": "cron",
+      "pattern": "0 6 * * *",
+      "timezone": "America/New_York"
+    },
+    "sessionTarget": "isolated",
+    "agentTurn": "Run your daily product discovery scan. 1) Search TikTok trending products and viral hashtags (#tiktokmademebuyit, #amazonfinds) via RapidAPI, 2) Check Google Trends for rising product searches, 3) Scrape top 5 competitor Shopify stores for new product additions, 4) Cross-reference findings with AliExpress/CJ Dropshipping for sourcing and margin calculation, 5) Validate top 3 discoveries against all 7 Winner Criteria, 6) Update product_pipeline table in Supabase with all findings. Flag any product with 50%+ margin and strong demand proof as URGENT to LaSean.",
+    "deliverTo": {
+      "channel": "telegram",
+      "mode": "none"
+    }
+  },
+  {
+    "name": "CarterMorningContent",
+    "schedule": {
+      "kind": "cron",
+      "pattern": "0 7 * * *",
+      "timezone": "America/New_York"
+    },
+    "sessionTarget": "isolated",
+    "agentTurn": "Execute your morning content cycle. 1) Research trending sounds, formats, and topics across TikTok, Instagram, and X, 2) Check content_calendar in Supabase for today's scheduled posts, 3) Generate AI images for any posts that need visuals using Replicate (Flux Pro for hero images, Schnell for bulk), 4) Draft platform-specific captions with hooks optimized for each algorithm, 5) Post morning content to all active platforms (Instagram, Facebook, LinkedIn, X, Threads), 6) Log all posts to content_calendar and content_performance tables. Prioritize scroll-stopping hooks — first 1 second determines everything.",
+    "deliverTo": {
+      "channel": "telegram",
+      "mode": "none"
+    }
+  },
+  {
+    "name": "OptimusDailyReport",
+    "schedule": {
+      "kind": "cron",
+      "pattern": "30 7 * * *",
+      "timezone": "America/New_York"
+    },
+    "sessionTarget": "isolated",
+    "agentTurn": "Generate and deliver your comprehensive Daily Status Report to LaSean. Query ALL Supabase tables to gather updates from all 9 bots: 1) Bot activity summaries — Ava (pipeline/deals), Benny (opportunities), Rhianna (intelligence), Tammy (trading P&L), Randy (properties), Deondre (dropshipping revenue/products), Carter (content performance/growth), Cleah (tech status/deployments), 2) Revenue across ALL streams — consulting pipeline, trading, dropshipping, 3) Completed tasks in last 24 hours, 4) Rhianna's latest intelligence findings, 5) Any issues or blockers, 6) Deondre's product pipeline status, 7) Carter's content engagement metrics. Format as your standard report template and deliver via Telegram.",
+    "deliverTo": {
+      "channel": "telegram",
+      "mode": "announce"
+    }
+  },
+  {
+    "name": "TammyMarketOpen",
+    "schedule": {
+      "kind": "cron",
+      "pattern": "30 9 * * 1-5",
+      "timezone": "America/New_York"
+    },
+    "sessionTarget": "isolated",
+    "agentTurn": "Market is opening. Run your morning market analysis: 1) Fetch real price data from Alpha Vantage for watched stocks and forex pairs, 2) Check crypto prices via CoinGecko/fetch, 3) Review overnight news via NewsAPI and Brave Search, 4) Check any open paper positions and update Supabase, 5) Scan for high-conviction setups with full trade parameters (entry, stop, target, R:R), 6) Check sports odds from The Odds API for any high-EV betting opportunities, 7) Update positions and performance_metrics tables. Report any high-conviction trades via Telegram alert to LaSean.",
+    "deliverTo": {
+      "channel": "telegram",
+      "mode": "announce"
+    }
+  },
+  {
+    "name": "CarterAfternoonContent",
+    "schedule": {
+      "kind": "cron",
+      "pattern": "0 15 * * *",
+      "timezone": "America/New_York"
+    },
+    "sessionTarget": "isolated",
+    "agentTurn": "Execute your afternoon content cycle. 1) Check morning post performance metrics — identify any breakout content to boost/reshare, 2) Generate and post afternoon content batch optimized for evening engagement peaks, 3) Create any product marketing content Deondre has queued (check Supabase for product marketing requests), 4) Post to platforms with evening peak times (TikTok 7-11 PM, Instagram 7-9 PM), 5) Update content_performance table with latest metrics. Focus on video content for afternoon — Reels and TikTok perform best in evening hours.",
+    "deliverTo": {
+      "channel": "telegram",
+      "mode": "none"
+    }
+  },
+  {
+    "name": "BennyWeeklyPresentation",
+    "schedule": {
+      "kind": "cron",
+      "pattern": "0 7 * * 0",
+      "timezone": "America/New_York"
+    },
+    "sessionTarget": "isolated",
+    "agentTurn": "Deliver your Weekly Business Opportunity Presentation to LaSean. Present your best researched business opportunity from this week including: 1) The Opportunity — concept, market, target customer, 2) Financial Projections — startup costs, revenue projections, ROI, 3) Automation Blueprint — tech stack, AI integration, scalability, 4) White Label & Affiliate Strategy, 5) Go/No-Go Recommendation with confidence score. Use real data from your research this week. Store full presentation in Supabase.",
+    "deliverTo": {
+      "channel": "telegram",
+      "mode": "announce"
+    }
+  },
+  {
+    "name": "RandyWeeklyReport",
+    "schedule": {
+      "kind": "cron",
+      "pattern": "0 8 * * 0",
+      "timezone": "America/New_York"
+    },
+    "sessionTarget": "isolated",
+    "agentTurn": "Deliver your Weekly Real Estate Report. Use Google Maps for location intelligence and Firecrawl to scrape auction platforms. Include: 1) Upcoming tax deed auctions in next 30 days with registration deadlines, 2) Top 3-5 property recommendations with full analysis — comps, neighborhood data (Google Maps), ROI for flip/rent/hold scenarios, 3) Registration deadlines and required actions, 4) Market trends and intelligence from Brave/Serper research, 5) Portfolio performance if applicable. Store full analysis in Supabase properties table.",
+    "deliverTo": {
+      "channel": "telegram",
+      "mode": "announce"
+    }
+  },
+  {
+    "name": "AvaWeeklyPipeline",
+    "schedule": {
+      "kind": "cron",
+      "pattern": "0 8 * * 1",
+      "timezone": "America/New_York"
+    },
+    "sessionTarget": "isolated",
+    "agentTurn": "Generate your Weekly Pipeline Report for Monday morning. Review Supabase pipeline and prospects tables to report: 1) Pipeline overview — deals by stage with values, 2) New leads added this week (check Rhianna's prospects), 3) Proposals sent and their status, 4) Follow-ups needed this week — send follow-up emails via Resend for any stale proposals, 5) Revenue forecast for the month, 6) Any stalled deals needing attention. Research new prospects from Rhianna using Serper and Firecrawl to build profiles before outreach.",
+    "deliverTo": {
+      "channel": "telegram",
+      "mode": "announce"
+    }
+  },
+  {
+    "name": "DeondreWeeklyReport",
+    "schedule": {
+      "kind": "cron",
+      "pattern": "0 9 * * 0",
+      "timezone": "America/New_York"
+    },
+    "sessionTarget": "isolated",
+    "agentTurn": "Deliver your Weekly Dropshipping P&L Report to LaSean. Pull data from Supabase and Shopify to report: 1) Revenue and profit this week vs last week, 2) Top performing products by profit (not just revenue), 3) Product pipeline status — how many in each stage (Discovered/Researching/Validated/Testing/Scaling/Killed), 4) Products to KILL this week (< 2% conversion or negative margin) with reasoning, 5) Products to SCALE this week (proven winners) with budget recommendation, 6) New product discoveries with Winner Criteria analysis, 7) Supplier performance and any fulfillment issues, 8) Recommended actions for next week.",
+    "deliverTo": {
+      "channel": "telegram",
+      "mode": "announce"
+    }
+  },
+  {
+    "name": "CarterWeeklyAnalytics",
+    "schedule": {
+      "kind": "cron",
+      "pattern": "0 10 * * 1",
+      "timezone": "America/New_York"
+    },
+    "sessionTarget": "isolated",
+    "agentTurn": "Deliver your Weekly Content Performance Report for Monday morning. Pull data from Supabase content_performance table and platform APIs to report: 1) Top 5 performing posts across all platforms with engagement breakdown, 2) Follower growth per platform (week over week), 3) Engagement rate per platform vs industry benchmarks, 4) Content format analysis — which formats (Reels, carousels, text posts, video) performed best, 5) Best performing hooks and caption patterns, 6) Trending content opportunities for this week, 7) Deondre product marketing performance (if applicable), 8) Content calendar plan for the coming week with daily themes and platform focus.",
+    "deliverTo": {
+      "channel": "telegram",
+      "mode": "announce"
+    }
+  },
+  {
+    "name": "CleahWeeklyTechReport",
+    "schedule": {
+      "kind": "cron",
+      "pattern": "0 9 * * 1",
+      "timezone": "America/New_York"
+    },
+    "sessionTarget": "isolated",
+    "agentTurn": "Deliver your Weekly Technical Health Report. Check GitHub for repo status and Supabase for system data: 1) System uptime and deployment status across all services, 2) Open bugs by severity with ETA for critical fixes, 3) PRs merged this week and code review summary, 4) Security alerts — any CVEs or dependency vulnerabilities flagged, 5) Infrastructure costs and optimization opportunities, 6) Bot ecosystem health — any MCP server failures, cron job misses, or performance issues, 7) Upcoming technical work and priorities for the week. Flag anything that could impact bot operations.",
+    "deliverTo": {
+      "channel": "telegram",
+      "mode": "announce"
+    }
+  }
+]

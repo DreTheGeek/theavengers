@@ -1,27 +1,280 @@
 {
+  "models": {
+    "catalog": {
+      "openrouter/deepseek/deepseek-chat": {
+        "provider": "openrouter",
+        "model": "deepseek/deepseek-chat",
+        "contextWindow": 163000
+      },
+      "openrouter/deepseek/deepseek-reasoner": {
+        "provider": "openrouter",
+        "model": "deepseek/deepseek-reasoner",
+        "contextWindow": 163000
+      },
+      "openrouter/meta-llama/llama-3.3-70b-instruct": {
+        "provider": "openrouter",
+        "model": "meta-llama/llama-3.3-70b-instruct",
+        "contextWindow": 131000
+      },
+      "openrouter/qwen/qwen-2.5-72b-instruct": {
+        "provider": "openrouter",
+        "model": "qwen/qwen-2.5-72b-instruct",
+        "contextWindow": 131000
+      }
+    }
+  },
+
+  "agents": {
+    "defaults": {
+      "model": {
+        "primary": "openrouter/deepseek/deepseek-chat",
+        "fallback": [
+          "openrouter/meta-llama/llama-3.3-70b-instruct",
+          "openrouter/qwen/qwen-2.5-72b-instruct"
+        ]
+      },
+      "memory": {
+        "search": { "enabled": true },
+        "compaction": { "mode": "cache-ttl", "ttl": "6h" }
+      },
+      "sandbox": {
+        "mode": "off"
+      },
+      "tools": {
+        "allow": ["*"],
+        "deny": ["group:runtime"]
+      }
+    },
+
+    "list": [
+      {
+        "id": "optimus-prime",
+        "default": true,
+        "workspace": "/app/workspaces/optimus-prime",
+        "model": {
+          "primary": "openrouter/deepseek/deepseek-chat",
+          "fallback": [
+            "openrouter/meta-llama/llama-3.3-70b-instruct"
+          ]
+        }
+      },
+      {
+        "id": "benny-builder",
+        "workspace": "/app/workspaces/benny-builder",
+        "model": {
+          "primary": "openrouter/deepseek/deepseek-reasoner",
+          "fallback": [
+            "openrouter/deepseek/deepseek-chat",
+            "openrouter/qwen/qwen-2.5-72b-instruct"
+          ]
+        }
+      },
+      {
+        "id": "rhianna-research",
+        "workspace": "/app/workspaces/rhianna-research",
+        "model": {
+          "primary": "openrouter/deepseek/deepseek-chat",
+          "fallback": [
+            "openrouter/qwen/qwen-2.5-72b-instruct"
+          ]
+        }
+      },
+      {
+        "id": "ava-analyst",
+        "workspace": "/app/workspaces/ava-analyst",
+        "model": {
+          "primary": "openrouter/deepseek/deepseek-chat",
+          "fallback": [
+            "openrouter/meta-llama/llama-3.3-70b-instruct"
+          ]
+        }
+      },
+      {
+        "id": "tammy-trader",
+        "workspace": "/app/workspaces/tammy-trader",
+        "model": {
+          "primary": "openrouter/deepseek/deepseek-reasoner",
+          "fallback": [
+            "openrouter/deepseek/deepseek-chat"
+          ]
+        }
+      },
+      {
+        "id": "randy-realty",
+        "workspace": "/app/workspaces/randy-realty",
+        "model": {
+          "primary": "openrouter/deepseek/deepseek-chat",
+          "fallback": [
+            "openrouter/meta-llama/llama-3.3-70b-instruct"
+          ]
+        }
+      },
+      {
+        "id": "deondre-dropshipping",
+        "workspace": "/app/workspaces/deondre-dropshipping",
+        "model": {
+          "primary": "openrouter/deepseek/deepseek-chat",
+          "fallback": [
+            "openrouter/meta-llama/llama-3.3-70b-instruct",
+            "openrouter/qwen/qwen-2.5-72b-instruct"
+          ]
+        }
+      },
+      {
+        "id": "cleah-coding",
+        "workspace": "/app/workspaces/cleah-coding",
+        "model": {
+          "primary": "openrouter/deepseek/deepseek-reasoner",
+          "fallback": [
+            "openrouter/deepseek/deepseek-chat",
+            "openrouter/qwen/qwen-2.5-72b-instruct"
+          ]
+        }
+      },
+      {
+        "id": "carter-content",
+        "workspace": "/app/workspaces/carter-content",
+        "model": {
+          "primary": "openrouter/deepseek/deepseek-chat",
+          "fallback": [
+            "openrouter/qwen/qwen-2.5-72b-instruct",
+            "openrouter/meta-llama/llama-3.3-70b-instruct"
+          ]
+        }
+      }
+    ]
+  },
+
+  "channels": {
+    "telegram": {
+      "enabled": true,
+      "botToken": "${TELEGRAM_BOT_TOKEN}",
+      "dmPolicy": "pairing",
+      "groupPolicy": "allowlist",
+      "streamMode": "partial",
+      "textChunkLimit": 4000
+    }
+  },
+
+  "bindings": [
+    { "agentId": "optimus-prime", "match": { "channel": "telegram" } }
+  ],
+
+  "session": {
+    "dmScope": "per-account-channel-peer",
+    "reset": {
+      "kind": "daily",
+      "boundary": "04:00",
+      "timezone": "America/New_York"
+    }
+  },
+
+  "cron": {
+    "enabled": true,
+    "store": "/app/cron/jobs.json"
+  },
+
+  "gateway": {
+    "port": 18789,
+    "bind": "0.0.0.0"
+  },
+
   "mcp": {
     "servers": {
       "supabase": {
-        "command": "npx",
-        "args": [
-          "-y",
-          "@modelcontextprotocol/server-supabase"
-        ],
+        "command": "mcp-server-supabase",
+        "args": [],
         "env": {
-          "SUPABASE_URL": "${SUPABASE URL}",
-          "SUPABASE_KEY": "${SUPABASE KEY}"
+          "SUPABASE_URL": "${SUPABASE_URL}",
+          "SUPABASE_KEY": "${SUPABASE_KEY}"
         }
       },
       "brave-search": {
-        "command": "npx",
-        "args": [
-          "-y",
-          "@modelcontextprotocol/server-brave-search"
-        ],
+        "command": "mcp-server-brave-search",
+        "args": [],
         "env": {
-          "BRAVE_API_KEY": "${BRAVEAPIKEY}"
+          "BRAVE_API_KEY": "${BRAVE_API_KEY}"
         }
+      },
+      "google-search": {
+        "command": "serper-search-scrape-mcp-server",
+        "args": [],
+        "env": {
+          "SERPER_API_KEY": "${SERPER_API_KEY}"
+        }
+      },
+      "firecrawl": {
+        "command": "firecrawl-mcp",
+        "args": [],
+        "env": {
+          "FIRECRAWL_API_KEY": "${FIRECRAWL_API_KEY}"
+        }
+      },
+      "google-maps": {
+        "command": "mcp-server-google-maps",
+        "args": [],
+        "env": {
+          "GOOGLE_MAPS_API_KEY": "${GOOGLE_MAPS_API_KEY}"
+        }
+      },
+      "github": {
+        "command": "mcp-server-github",
+        "args": [],
+        "env": {
+          "GITHUB_PERSONAL_ACCESS_TOKEN": "${GITHUB_TOKEN}"
+        }
+      },
+      "replicate": {
+        "command": "replicate-mcp",
+        "args": [],
+        "env": {
+          "REPLICATE_API_TOKEN": "${REPLICATE_API_TOKEN}"
+        }
+      },
+      "email": {
+        "command": "resend-mcp",
+        "args": [],
+        "env": {
+          "RESEND_API_KEY": "${RESEND_API_KEY}"
+        }
+      },
+      "twitter": {
+        "command": "twitter-mcp-server",
+        "args": [],
+        "env": {
+          "API_KEY": "${X_API_KEY}",
+          "API_SECRET_KEY": "${X_API_SECRET}",
+          "ACCESS_TOKEN": "${X_ACCESS_TOKEN}",
+          "ACCESS_TOKEN_SECRET": "${X_ACCESS_TOKEN_SECRET}"
+        }
+      },
+      "news": {
+        "command": "mcp-newsapi",
+        "args": [],
+        "env": {
+          "NEWSAPI_KEY": "${NEWSAPI_KEY}"
+        }
+      },
+      "sequential-thinking": {
+        "command": "mcp-server-sequential-thinking",
+        "args": []
+      },
+      "fetch": {
+        "command": "mcp-server-fetch",
+        "args": []
+      },
+      "memory": {
+        "command": "mcp-server-memory",
+        "args": []
+      },
+      "filesystem": {
+        "command": "mcp-server-filesystem",
+        "args": ["/app/workspaces"]
       }
     }
+  },
+
+  "logging": {
+    "level": "info"
   }
 }
