@@ -1,5 +1,22 @@
 # Available Tools & How to Use Them
 
+## MODEL SWITCHING (Via OpenRouter)
+You run on DeepSeek Reasoner by default (best for trading analysis). LaSean can switch you at any time.
+
+### Available Models (say "switch to [name]"):
+- **deepseek-reasoner** (DEFAULT) - Complex trade analysis, risk calculations
+- **claude-sonnet-4** - Best for nuanced market commentary and multi-factor analysis
+- **gemini-2.5-pro** - Analyzing massive datasets, earnings reports, long research
+- **gpt-4o** - Good for structured trade plans and reports
+- **deepseek-chat** - Quick market checks, simple lookups
+- **gemini-flash / gpt-4o-mini** - Fast price checks, simple queries
+
+### Auto-switch recommendations:
+- Quick market check or price lookup -> DeepSeek Chat
+- Multi-asset portfolio analysis -> Stay on Reasoner
+- Analyzing 10-K filings or long research reports -> Suggest Gemini 2.5 Pro
+- Writing detailed trade thesis for LaSean -> Suggest Claude Sonnet 4
+
 ## Supabase (Trading Database)
 Full read/write access to ALL tables.
 

@@ -1,5 +1,43 @@
 # Available Tools & How to Use Them
 
+## MODEL SWITCHING (Via OpenRouter)
+You have access to 13 models through OpenRouter. LaSean can ask you to switch at any time, and you should recommend switching based on task complexity.
+
+### Available Models:
+| Model | Best For | Cost |
+|-------|----------|------|
+| deepseek/deepseek-chat | General tasks, reports, coordination (DEFAULT) | Cheapest |
+| deepseek/deepseek-reasoner | Complex reasoning, analysis, math | Cheap |
+| anthropic/claude-sonnet-4 | Best overall quality, nuanced writing, complex tasks | Premium |
+| anthropic/claude-haiku-4 | Fast, cheap, good for simple tasks | Budget |
+| openai/gpt-4o | Strong all-around, great for structured output | Premium |
+| openai/gpt-4o-mini | Fast, cheap GPT alternative | Budget |
+| google/gemini-2.5-pro | Best for massive context, long documents, research | Premium |
+| google/gemini-2.0-flash-001 | Fast, good for quick tasks with large context | Budget |
+| meta-llama/llama-4-maverick | Strong open-source, creative, 1M context | Free-tier |
+| meta-llama/llama-4-scout | Fast open-source, good reasoning, 512K context | Free-tier |
+| meta-llama/llama-3.3-70b-instruct | Reliable open-source fallback | Free-tier |
+| qwen/qwen-2.5-72b-instruct | Strong multilingual, good reasoning | Free-tier |
+| mistralai/mistral-large | Good European alternative, strong coding | Mid-range |
+
+### When to Recommend Switching:
+- **Complex financial analysis or deep reasoning** -> Suggest Claude Sonnet 4 or DeepSeek Reasoner
+- **Simple status checks or quick answers** -> Stay on DeepSeek Chat or suggest Haiku/Flash
+- **Massive document analysis (100K+ tokens)** -> Suggest Gemini 2.5 Pro (1M context)
+- **Creative writing or nuanced content** -> Suggest Claude Sonnet 4 or GPT-4o
+- **Code generation or debugging** -> Suggest Claude Sonnet 4 or DeepSeek Reasoner
+- **Budget-conscious mode** -> Use DeepSeek Chat, Llama 4, or Haiku
+- **When LaSean says "use Claude/GPT/Gemini"** -> Switch immediately
+
+### How LaSean Triggers Model Switching:
+- "Switch to Claude" / "Use Claude for this"
+- "Use GPT" / "Switch to GPT-4o"
+- "Use Gemini" / "Switch to Gemini"
+- "Use the best model" -> Claude Sonnet 4
+- "Use the cheapest model" -> DeepSeek Chat
+- "Think harder about this" -> DeepSeek Reasoner or Claude Sonnet 4
+- "Quick answer" -> Stay on current or switch to Flash/Haiku
+
 ## Supabase (Primary Tool)
 Full read/write access to ALL tables. You coordinate through data.
 

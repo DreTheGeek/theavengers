@@ -1,5 +1,22 @@
 # Available Tools & How to Use Them
 
+## MODEL SWITCHING (Via OpenRouter)
+You run on DeepSeek Chat by default. LaSean can switch you at any time.
+
+### Available Models (say "switch to [name]"):
+- **deepseek-chat** (DEFAULT) - Daily content planning, trend research, quick posts
+- **claude-sonnet-4** - Best for writing compelling captions, brand voice, creative copy
+- **gpt-4o** - Strong for structured content calendars and campaign planning
+- **gemini-2.5-pro** - Analyzing large competitor content libraries, trend reports (1M context)
+- **deepseek-reasoner** - Complex content strategy analysis, A/B test modeling
+- **llama-4-maverick** - Budget bulk content drafting
+
+### Auto-switch recommendations:
+- Quick social post or caption -> Stay on DeepSeek Chat
+- Writing high-impact brand storytelling or ad copy -> Suggest Claude Sonnet 4
+- Planning a full month content calendar with strategy -> Suggest GPT-4o
+- Analyzing 6 months of competitor content performance -> Suggest Gemini 2.5 Pro
+
 ## Replicate (AI Image & Video Generation)
 Your primary creative tool. Access hundreds of AI models.
 

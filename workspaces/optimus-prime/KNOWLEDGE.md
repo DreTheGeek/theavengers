@@ -15,6 +15,53 @@
 | cleah-coding | Cleah Coding | CTO — Code, DevOps, Security | DeepSeek Reasoner | dev_tasks, bug_reports, deployments, tech_decisions |
 | carter-content | Carter Content | CMO — Content & Social Media | DeepSeek Chat | content_calendar, content_performance, content_assets, trending_content |
 
+## MODEL ROUTING — WHEN TO SWITCH MODELS
+
+### Default Models Per Bot:
+| Bot | Default Model | Why |
+|-----|--------------|-----|
+| Optimus Prime | DeepSeek Chat | Fast coordination, reporting |
+| Rhianna Research | DeepSeek Chat | Quick research lookups |
+| Ava Analyst | DeepSeek Chat | Pipeline updates, outreach |
+| Tammy Trader | DeepSeek Reasoner | Complex trade analysis |
+| Benny Builder | DeepSeek Reasoner | Financial modeling |
+| Randy Realty | DeepSeek Reasoner | Property valuation |
+| Cleah Coding | DeepSeek Reasoner | Architecture decisions, debugging |
+| Deondre Dropshipping | DeepSeek Chat | Product research, daily ops |
+| Carter Content | DeepSeek Chat | Content planning, trend research |
+
+### Model Selection Guide (13 Models Available):
+| Task Type | Best Model | Reason |
+|-----------|-----------|--------|
+| Quick lookups, simple tasks | DeepSeek Chat | Cheapest, fast |
+| Complex reasoning, math, analysis | DeepSeek Reasoner | Best reasoning per dollar |
+| Best overall quality, writing, nuance | Claude Sonnet 4 | Premium quality |
+| Fast cheap tasks | Claude Haiku 4 | Budget premium |
+| Structured output, reports | GPT-4o | Strong formatting |
+| Fast cheap GPT tasks | GPT-4o-mini | Budget GPT |
+| Massive documents (100K+ tokens) | Gemini 2.5 Pro | 1M context window |
+| Fast with large context | Gemini 2.0 Flash | Budget 1M context |
+| Free-tier creative tasks | Llama 4 Maverick | Free, 1M context |
+| Free-tier reasoning | Llama 4 Scout | Free, 512K context |
+| Free-tier fallback | Llama 3.3 70B | Reliable open-source |
+| Multilingual tasks | Qwen 2.5 72B | Free, strong multilingual |
+| European/coding alternative | Mistral Large | Mid-range |
+
+### Cost Tiers:
+- **Free**: Llama 4 Maverick, Llama 4 Scout, Llama 3.3 70B, Qwen 2.5 72B
+- **Cheap**: DeepSeek Chat, DeepSeek Reasoner
+- **Mid**: Mistral Large
+- **Budget Premium**: Claude Haiku 4, GPT-4o-mini, Gemini Flash
+- **Premium**: Claude Sonnet 4, GPT-4o, Gemini 2.5 Pro
+
+### When to Recommend Model Switches:
+- A bot is struggling with a task -> Suggest upgrading to Claude Sonnet 4 or Reasoner
+- Running up costs on simple tasks -> Suggest downgrading to DeepSeek Chat or free-tier
+- Need to process huge documents -> Suggest Gemini 2.5 Pro (1M context)
+- LaSean says "use the best" -> Switch to Claude Sonnet 4
+- LaSean says "save money" -> Switch to DeepSeek Chat or free-tier models
+- LaSean says "think harder" -> Switch to DeepSeek Reasoner or Claude Sonnet 4
+
 ## CROSS-BOT COORDINATION PROTOCOLS
 
 ### Data Flow Between Bots:

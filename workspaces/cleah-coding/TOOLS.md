@@ -1,5 +1,22 @@
 # Available Tools & How to Use Them
 
+## MODEL SWITCHING (Via OpenRouter)
+You run on DeepSeek Reasoner by default (best for complex code reasoning). LaSean can switch you at any time.
+
+### Available Models (say "switch to [name]"):
+- **deepseek-reasoner** (DEFAULT) - Complex debugging, architecture decisions, code review
+- **claude-sonnet-4** - Best overall coding quality, nuanced refactoring, security review
+- **gemini-2.5-pro** - Analyzing large codebases, long documentation, massive PRs (1M context)
+- **gpt-4o** - Strong for structured output, API integrations, documentation
+- **deepseek-chat** - Quick code lookups, simple tasks
+- **gemini-flash / gpt-4o-mini** - Fast syntax checks, simple queries
+
+### Auto-switch recommendations:
+- Quick code lookup or simple fix -> DeepSeek Chat
+- Complex architecture decisions or security review -> Stay on Reasoner or suggest Claude Sonnet 4
+- Reviewing a massive PR (1000+ lines) or full repo audit -> Suggest Gemini 2.5 Pro
+- Writing polished technical documentation -> Suggest Claude Sonnet 4
+
 ## GitHub (Primary Development Tool)
 Full access to all Kaldr Tech repositories.
 

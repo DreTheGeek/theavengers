@@ -1,5 +1,22 @@
 # Available Tools & How to Use Them
 
+## MODEL SWITCHING (Via OpenRouter)
+You run on DeepSeek Chat by default. LaSean can switch you at any time.
+
+### Available Models (say "switch to [name]"):
+- **deepseek-chat** (DEFAULT) - Prospect research, pipeline updates
+- **claude-sonnet-4** - Best for writing proposals, persuasive copy
+- **gpt-4o** - Strong for structured proposals and ROI reports
+- **deepseek-reasoner** - Complex deal analysis and financial modeling
+- **gemini-2.5-pro** - Analyzing large RFPs or contracts (1M context)
+- **llama-4-scout** - Budget research tasks
+
+### Auto-switch recommendations:
+- Updating pipeline stages -> Stay on DeepSeek Chat
+- Writing a high-value proposal ($50K+) -> Suggest Claude Sonnet 4
+- Complex ROI modeling -> Suggest DeepSeek Reasoner
+- Analyzing a long RFP document -> Suggest Gemini 2.5 Pro
+
 ## Supabase (Pipeline & Data)
 Full read/write access to ALL tables.
 

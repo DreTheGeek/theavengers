@@ -11,6 +11,46 @@
         "model": "deepseek/deepseek-reasoner",
         "contextWindow": 163000
       },
+      "openrouter/anthropic/claude-sonnet-4": {
+        "provider": "openrouter",
+        "model": "anthropic/claude-sonnet-4",
+        "contextWindow": 200000
+      },
+      "openrouter/anthropic/claude-haiku-4": {
+        "provider": "openrouter",
+        "model": "anthropic/claude-haiku-4",
+        "contextWindow": 200000
+      },
+      "openrouter/openai/gpt-4o": {
+        "provider": "openrouter",
+        "model": "openai/gpt-4o",
+        "contextWindow": 128000
+      },
+      "openrouter/openai/gpt-4o-mini": {
+        "provider": "openrouter",
+        "model": "openai/gpt-4o-mini",
+        "contextWindow": 128000
+      },
+      "openrouter/google/gemini-2.5-pro": {
+        "provider": "openrouter",
+        "model": "google/gemini-2.5-pro",
+        "contextWindow": 1000000
+      },
+      "openrouter/google/gemini-2.0-flash-001": {
+        "provider": "openrouter",
+        "model": "google/gemini-2.0-flash-001",
+        "contextWindow": 1000000
+      },
+      "openrouter/meta-llama/llama-4-maverick": {
+        "provider": "openrouter",
+        "model": "meta-llama/llama-4-maverick",
+        "contextWindow": 1000000
+      },
+      "openrouter/meta-llama/llama-4-scout": {
+        "provider": "openrouter",
+        "model": "meta-llama/llama-4-scout",
+        "contextWindow": 512000
+      },
       "openrouter/meta-llama/llama-3.3-70b-instruct": {
         "provider": "openrouter",
         "model": "meta-llama/llama-3.3-70b-instruct",
@@ -20,6 +60,11 @@
         "provider": "openrouter",
         "model": "qwen/qwen-2.5-72b-instruct",
         "contextWindow": 131000
+      },
+      "openrouter/mistralai/mistral-large": {
+        "provider": "openrouter",
+        "model": "mistralai/mistral-large",
+        "contextWindow": 128000
       }
     }
   },
@@ -54,7 +99,9 @@
         "model": {
           "primary": "openrouter/deepseek/deepseek-chat",
           "fallback": [
-            "openrouter/meta-llama/llama-3.3-70b-instruct"
+            "openrouter/google/gemini-2.0-flash-001",
+            "openrouter/meta-llama/llama-4-scout",
+            "openrouter/openai/gpt-4o-mini"
           ]
         }
       },
@@ -64,8 +111,9 @@
         "model": {
           "primary": "openrouter/deepseek/deepseek-reasoner",
           "fallback": [
-            "openrouter/deepseek/deepseek-chat",
-            "openrouter/qwen/qwen-2.5-72b-instruct"
+            "openrouter/anthropic/claude-sonnet-4",
+            "openrouter/google/gemini-2.5-pro",
+            "openrouter/deepseek/deepseek-chat"
           ]
         }
       },
@@ -75,7 +123,9 @@
         "model": {
           "primary": "openrouter/deepseek/deepseek-chat",
           "fallback": [
-            "openrouter/qwen/qwen-2.5-72b-instruct"
+            "openrouter/google/gemini-2.5-pro",
+            "openrouter/openai/gpt-4o",
+            "openrouter/meta-llama/llama-4-maverick"
           ]
         }
       },
@@ -85,7 +135,9 @@
         "model": {
           "primary": "openrouter/deepseek/deepseek-chat",
           "fallback": [
-            "openrouter/meta-llama/llama-3.3-70b-instruct"
+            "openrouter/openai/gpt-4o",
+            "openrouter/anthropic/claude-sonnet-4",
+            "openrouter/meta-llama/llama-4-scout"
           ]
         }
       },
@@ -95,6 +147,8 @@
         "model": {
           "primary": "openrouter/deepseek/deepseek-reasoner",
           "fallback": [
+            "openrouter/anthropic/claude-sonnet-4",
+            "openrouter/google/gemini-2.5-pro",
             "openrouter/deepseek/deepseek-chat"
           ]
         }
@@ -105,7 +159,9 @@
         "model": {
           "primary": "openrouter/deepseek/deepseek-chat",
           "fallback": [
-            "openrouter/meta-llama/llama-3.3-70b-instruct"
+            "openrouter/openai/gpt-4o",
+            "openrouter/google/gemini-2.0-flash-001",
+            "openrouter/meta-llama/llama-4-scout"
           ]
         }
       },
@@ -115,8 +171,9 @@
         "model": {
           "primary": "openrouter/deepseek/deepseek-chat",
           "fallback": [
-            "openrouter/meta-llama/llama-3.3-70b-instruct",
-            "openrouter/qwen/qwen-2.5-72b-instruct"
+            "openrouter/openai/gpt-4o",
+            "openrouter/google/gemini-2.0-flash-001",
+            "openrouter/meta-llama/llama-4-maverick"
           ]
         }
       },
@@ -126,8 +183,9 @@
         "model": {
           "primary": "openrouter/deepseek/deepseek-reasoner",
           "fallback": [
-            "openrouter/deepseek/deepseek-chat",
-            "openrouter/qwen/qwen-2.5-72b-instruct"
+            "openrouter/anthropic/claude-sonnet-4",
+            "openrouter/google/gemini-2.5-pro",
+            "openrouter/openai/gpt-4o"
           ]
         }
       },
@@ -137,8 +195,9 @@
         "model": {
           "primary": "openrouter/deepseek/deepseek-chat",
           "fallback": [
-            "openrouter/qwen/qwen-2.5-72b-instruct",
-            "openrouter/meta-llama/llama-3.3-70b-instruct"
+            "openrouter/openai/gpt-4o",
+            "openrouter/anthropic/claude-sonnet-4",
+            "openrouter/meta-llama/llama-4-maverick"
           ]
         }
       }

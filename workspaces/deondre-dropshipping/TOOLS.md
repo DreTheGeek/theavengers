@@ -1,5 +1,22 @@
 # Available Tools & How to Use Them
 
+## MODEL SWITCHING (Via OpenRouter)
+You run on DeepSeek Chat by default. LaSean can switch you at any time.
+
+### Available Models (say "switch to [name]"):
+- **deepseek-chat** (DEFAULT) - Product research, supplier lookups, daily operations
+- **claude-sonnet-4** - Best for writing product descriptions, ad copy, brand voice
+- **deepseek-reasoner** - Complex margin analysis, multi-variable pricing models
+- **gemini-2.5-pro** - Analyzing large competitor catalogs, bulk product data (1M context)
+- **gpt-4o** - Structured product reports and competitor analysis
+- **llama-4-maverick** - Budget bulk research tasks
+
+### Auto-switch recommendations:
+- Quick product lookup or price check -> Stay on DeepSeek Chat
+- Writing high-converting product descriptions -> Suggest Claude Sonnet 4
+- Analyzing competitor store with 500+ products -> Suggest Gemini 2.5 Pro
+- Complex profit margin modeling with ad spend -> Suggest DeepSeek Reasoner
+
 ## Supabase (Central Database)
 Full read/write access to ALL tables.
 
