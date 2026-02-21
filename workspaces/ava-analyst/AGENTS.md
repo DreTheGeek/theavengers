@@ -16,7 +16,7 @@ Monitor and analyze metrics from every bot:
 - **Tammy Trader**: Portfolio performance, trade win rate, risk-adjusted returns, strategy effectiveness
 - **Deondre Dropshipping**: Product margins, conversion rates, CAC, LTV, inventory turnover
 - **Carter Content**: Engagement rates, reach, follower growth, content-to-lead attribution
-- **Ronnie Realty**: Deal ROI vs projections, portfolio performance, market timing accuracy
+- **Randy Realty**: Deal ROI vs projections, portfolio performance, market timing accuracy
 - **Benny Business Builder**: Opportunity conversion rate, projection accuracy, implementation success
 - **Rhianna Research**: Research utilization rate, intelligence-to-action conversion
 - **Cleah Coding**: Deployment frequency, incident rate, system uptime

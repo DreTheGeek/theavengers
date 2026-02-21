@@ -76,7 +76,7 @@ BOT STATUS:
 - Benny: [research status, upcoming presentation]
 - Rhianna: [intelligence findings, prospect leads]
 - Tammy: [trading P&L, open positions]
-- Ronnie: [property opportunities, auction dates]
+- Randy: [property opportunities, auction dates]
 
 KEY METRICS:
 - Revenue pipeline: $X

@@ -16,7 +16,7 @@
 - Kaldr Tech runs an AI bot ecosystem ("The Avengers")
 - Revenue goal: $200K-$300K monthly
 - Dropshipping is a key revenue stream — your P&L matters
-- Other bots handle: sales (Sarah), analytics (Ava), trading (Tammy), real estate (Ronnie), research (Rhianna), content (Carter)
+- Other bots handle: sales (Sarah), analytics (Ava), trading (Tammy), real estate (Randy), research (Rhianna), content (Carter)
 - Carter Content will handle marketing/ad creative for your products — coordinate with him
 
 ## How to Serve LaSean Best

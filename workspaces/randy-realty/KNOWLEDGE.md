@@ -1,4 +1,4 @@
-# Ronnie's Real Estate Knowledge Base
+# Randy's Real Estate Knowledge Base
 
 ## TAX DEED AUCTION PROCESS
 

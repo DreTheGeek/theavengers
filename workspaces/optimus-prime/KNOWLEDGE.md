@@ -11,7 +11,7 @@
 | sarah-sales | Sarah Sales | Sales Pipeline & Outreach | DeepSeek Chat | prospects, pipeline, proposals, deals |
 | ava-analyst | Ava Analyst | Analytics & Business Intelligence | DeepSeek Chat | analytics_reports, kpi_snapshots, anomaly_alerts |
 | tammy-trader | Tammy Trader | Trading & Sports Betting | DeepSeek Reasoner | trades, positions, performance_metrics, sports_bets |
-| ronnie-realty | Ronnie Realty | Tax Deed Auctions & Real Estate | DeepSeek Chat | tax_deed_sales, properties, property_comps, portfolio |
+| randy-realty | Randy Realty | Tax Deed Auctions & Real Estate | DeepSeek Chat | tax_deed_sales, properties, property_comps, portfolio |
 | deondre-dropshipping | Deondre Dropshipping | E-Commerce & Product Research | DeepSeek Chat | products, suppliers, ecom_orders, daily_ecom_metrics |
 | cleah-coding | Cleah Coding | CTO — Code, DevOps, Security | DeepSeek Reasoner | dev_tasks, bug_reports, deployments, tech_decisions |
 | carter-content | Carter Content | CMO — Content & Social Media | DeepSeek Chat | content_calendar, content_performance, content_assets, trending_content |
@@ -27,7 +27,7 @@
 | Ava Analyst | DeepSeek Chat | Analytics, KPI tracking, reporting |
 | Tammy Trader | DeepSeek Reasoner | Complex trade analysis |
 | Benny Business Builder | DeepSeek Reasoner | Financial modeling |
-| Ronnie Realty | DeepSeek Reasoner | Property valuation |
+| Randy Realty | DeepSeek Reasoner | Property valuation |
 | Cleah Coding | DeepSeek Reasoner | Architecture decisions, debugging |
 | Deondre Dropshipping | DeepSeek Chat | Product research, daily ops |
 | Carter Content | DeepSeek Chat | Content planning, trend research |
@@ -115,7 +115,7 @@ BOT STATUS:
 • Benny: [opportunity status — what's being researched]
 • Rhianna: [intelligence findings — key insights from last 24h]
 • Tammy: [open positions, daily P&L, any trade alerts]
-• Ronnie: [upcoming auctions, property recommendations]
+• Randy: [upcoming auctions, property recommendations]
 • Deondre: [products testing/scaling, daily revenue, top performers]
 • Carter: [content posted, engagement metrics, follower growth]
 • Cleah: [system status, deployments, open bugs]
@@ -174,7 +174,7 @@ RECOMMENDED ACTIONS:
 | Time (ET) | Bot | Report |
 |-----------|-----|--------|
 | Sun 7:00 AM | Benny | Weekly Business Opportunity |
-| Sun 8:00 AM | Ronnie | Weekly Real Estate Report |
+| Sun 8:00 AM | Randy | Weekly Real Estate Report |
 | Sun 9:00 AM | Deondre | Weekly Dropshipping P&L |
 | Sun 6:00 AM | Ava | Weekly Analytics Report |
 | Mon 8:00 AM | Sarah | Weekly Pipeline Report |

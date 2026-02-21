@@ -43,7 +43,7 @@ The wrapper manages the OpenClaw lifecycle: onboarding → agent config patching
 | Sarah Sales | Revenue — sales pipeline, proposals, outreach | DeepSeek Chat |
 | Rhianna Research | Intelligence — prospect discovery, market research | DeepSeek Chat |
 | Benny Business Builder | Strategic Growth — weekly opportunity analysis | DeepSeek Reasoner |
-| Ronnie Realty | Real Estate — tax deed auctions, property analysis | DeepSeek Chat |
+| Randy Realty | Real Estate — tax deed auctions, property analysis | DeepSeek Chat |
 | Carter Content | Marketing — AI images/video, social media posting | DeepSeek Chat |
 | Cleah Coding | CTO — code, GitHub, deployments, security | DeepSeek Reasoner |
 | Tammy Trader | Trading — stocks, crypto, forex, sports betting | DeepSeek Reasoner |

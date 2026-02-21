@@ -98,8 +98,8 @@
         }
       },
       {
-        "id": "ronnie-realty",
-        "workspace": "/data/workspace/ronnie-realty",
+        "id": "randy-realty",
+        "workspace": "/data/workspace/randy-realty",
         "model": {
           "primary": "openrouter/deepseek/deepseek-chat",
           "fallbacks": [

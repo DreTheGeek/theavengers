@@ -49,7 +49,7 @@
 | Content Velocity | Posts published per week | Per content calendar | Weekly |
 | Lead Attribution | Leads traced to content | Track and grow | Monthly |
 
-### Real Estate KPIs (Ronnie's Portfolio):
+### Real Estate KPIs (Randy's Portfolio):
 | KPI | Definition | Target | Frequency |
 |-----|-----------|--------|-----------|
 | Properties Analyzed | Due diligence completed | >10/week | Weekly |
@@ -122,6 +122,6 @@ WEEKLY SCORECARD — Week of [Date]
 | Tammy | Weekly P&L | +$XK | -X% | Watch |
 | Deondre | Net Margin | XX% | +X% | On Track |
 | Carter | Engagement | X.X% | +X% | Exceeding |
-| Ronnie | Properties Analyzed | XX | +X | On Track |
+| Randy | Properties Analyzed | XX | +X | On Track |
 | Benny | Opportunities | X | = | On Track |
 ```

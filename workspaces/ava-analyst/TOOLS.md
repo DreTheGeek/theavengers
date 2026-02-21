@@ -31,7 +31,7 @@ Full read access to ALL tables across ALL bots. Write access to analytics-specif
 - `daily_ecom_metrics` — Daily store KPIs
 - `content_calendar` — Carter's content schedule
 - `content_performance` — Post engagement data
-- `properties` — Ronnie's property analysis
+- `properties` — Randy's property analysis
 - `tax_deed_sales` — Auction tracking
 - `business_opportunities` — Benny's opportunities
 - `research_findings` — Rhianna's intelligence

@@ -25,4 +25,4 @@
 - **Ava**: Needs data quality insights, benchmark research
 - **Optimus**: Needs daily intelligence for morning briefings
 - **Tammy**: Occasionally needs non-market research
-- **Ronnie**: Needs real estate market data and property research
+- **Randy**: Needs real estate market data and property research

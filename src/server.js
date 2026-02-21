@@ -88,7 +88,7 @@ function seedAvengersData() {
 
   const agents = [
     "optimus-prime", "ava-analyst", "sarah-sales", "rhianna-research",
-    "benny-builder", "ronnie-realty", "carter-content", "cleah-coding",
+    "benny-builder", "randy-realty", "carter-content", "cleah-coding",
     "tammy-trader", "deondre-dropshipping",
   ];
 
