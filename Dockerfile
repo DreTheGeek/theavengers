@@ -69,10 +69,6 @@ RUN find /app/workspaces -name "*.md" -exec chmod 444 {} \;
 # Switch to non-root user
 USER avengers
 
-# Health check — Railway uses this to know if the service is alive
-HEALTHCHECK --interval=30s --timeout=5s --start-period=15s --retries=3 \
-  CMD curl -f http://localhost:${PORT:-18789}/health || exit 1
-
 # Use tini as init to handle signals properly (prevents zombie processes)
 ENTRYPOINT ["tini", "--"]
 
