@@ -2,15 +2,16 @@
 
 ## THE AVENGERS — BOT ROSTER & CAPABILITIES
 
-### Active Bots (9):
+### Active Bots (10):
 | ID | Name | Role | Model | Key Tables |
 |----|------|------|-------|------------|
 | optimus-prime | Optimus Prime | COO — Coordination & Reporting | DeepSeek Chat | bot_tasks, bot_activity_log, daily_metrics |
 | rhianna-research | Rhianna Research | Intelligence & Prospect Discovery | DeepSeek Chat | research_findings, prospects, competitive_intel, market_trends |
-| benny-builder | Benny Builder | Business Opportunity Analysis | DeepSeek Reasoner | business_opportunities, financial_models |
-| ava-analyst | Ava Analyst | Sales Pipeline & Outreach | DeepSeek Chat | prospects, pipeline, proposals, deals |
+| benny-builder | Benny Business Builder | Business Opportunity Analysis | DeepSeek Reasoner | business_opportunities, financial_models |
+| sarah-sales | Sarah Sales | Sales Pipeline & Outreach | DeepSeek Chat | prospects, pipeline, proposals, deals |
+| ava-analyst | Ava Analyst | Analytics & Business Intelligence | DeepSeek Chat | analytics_reports, kpi_snapshots, anomaly_alerts |
 | tammy-trader | Tammy Trader | Trading & Sports Betting | DeepSeek Reasoner | trades, positions, performance_metrics, sports_bets |
-| randy-realty | Randy Realty | Tax Deed Auctions & Real Estate | DeepSeek Chat | tax_deed_sales, properties, property_comps, portfolio |
+| ronnie-realty | Ronnie Realty | Tax Deed Auctions & Real Estate | DeepSeek Chat | tax_deed_sales, properties, property_comps, portfolio |
 | deondre-dropshipping | Deondre Dropshipping | E-Commerce & Product Research | DeepSeek Chat | products, suppliers, ecom_orders, daily_ecom_metrics |
 | cleah-coding | Cleah Coding | CTO — Code, DevOps, Security | DeepSeek Reasoner | dev_tasks, bug_reports, deployments, tech_decisions |
 | carter-content | Carter Content | CMO — Content & Social Media | DeepSeek Chat | content_calendar, content_performance, content_assets, trending_content |
@@ -22,10 +23,11 @@
 |-----|--------------|-----|
 | Optimus Prime | DeepSeek Chat | Fast coordination, reporting |
 | Rhianna Research | DeepSeek Chat | Quick research lookups |
-| Ava Analyst | DeepSeek Chat | Pipeline updates, outreach |
+| Sarah Sales | DeepSeek Chat | Pipeline updates, outreach |
+| Ava Analyst | DeepSeek Chat | Analytics, KPI tracking, reporting |
 | Tammy Trader | DeepSeek Reasoner | Complex trade analysis |
-| Benny Builder | DeepSeek Reasoner | Financial modeling |
-| Randy Realty | DeepSeek Reasoner | Property valuation |
+| Benny Business Builder | DeepSeek Reasoner | Financial modeling |
+| Ronnie Realty | DeepSeek Reasoner | Property valuation |
 | Cleah Coding | DeepSeek Reasoner | Architecture decisions, debugging |
 | Deondre Dropshipping | DeepSeek Chat | Product research, daily ops |
 | Carter Content | DeepSeek Chat | Content planning, trend research |
@@ -66,13 +68,14 @@
 
 ### Data Flow Between Bots:
 ```
-Rhianna → prospects table → Ava (new leads to pursue)
+Rhianna → prospects table → Sarah (new leads to pursue)
 Rhianna → research_findings → Benny (market data for opportunity analysis)
 Rhianna → market_trends → All bots (contextual awareness)
 Deondre → products (marketing requests) → Carter (creates ad creative)
 Carter → content_performance → Optimus (for daily report)
 Tammy → performance_metrics → Optimus (for daily report)
-Ava → pipeline → Optimus (for daily report)
+Sarah → pipeline → Optimus (for daily report)
+Ava → analytics_reports → Optimus (for daily report)
 All bots → bot_activity_log → Optimus (monitors everything)
 Optimus → bot_tasks → All bots (task assignments and coordination)
 ```
@@ -102,16 +105,17 @@ Active Integrations: [X/22]
 🔴 PRIORITY ALERTS: [anything critical]
 
 REVENUE STREAMS:
-• Consulting Pipeline: $[X] across [X] deals (Ava)
+• Consulting Pipeline: $[X] across [X] deals (Sarah)
 • Dropshipping: $[X] revenue, $[X] profit, [X] orders (Deondre)
 • Trading P&L: $[+/-X] day, $[+/-X] week (Tammy)
 
 BOT STATUS:
-• Ava: [pipeline update — deals by stage, follow-ups needed]
+• Sarah: [pipeline update — deals by stage, follow-ups needed]
+• Ava: [analytics summary — revenue vs target, anomalies, trends]
 • Benny: [opportunity status — what's being researched]
 • Rhianna: [intelligence findings — key insights from last 24h]
 • Tammy: [open positions, daily P&L, any trade alerts]
-• Randy: [upcoming auctions, property recommendations]
+• Ronnie: [upcoming auctions, property recommendations]
 • Deondre: [products testing/scaling, daily revenue, top performers]
 • Carter: [content posted, engagement metrics, follower growth]
 • Cleah: [system status, deployments, open bugs]
@@ -150,7 +154,7 @@ RECOMMENDED ACTIONS:
 
 ### Growth KPIs:
 - **New Prospects/Week**: Target: 5+ qualified prospects from Rhianna
-- **Proposals Sent/Week**: Target: 2+ from Ava
+- **Proposals Sent/Week**: Target: 2+ from Sarah
 - **Products in Pipeline**: Target: 5-10 researching, 2-3 testing, 1-2 scaling (Deondre)
 - **Social Media Growth**: Target: Track weekly follower growth across all platforms (Carter)
 
@@ -170,9 +174,10 @@ RECOMMENDED ACTIONS:
 | Time (ET) | Bot | Report |
 |-----------|-----|--------|
 | Sun 7:00 AM | Benny | Weekly Business Opportunity |
-| Sun 8:00 AM | Randy | Weekly Real Estate Report |
+| Sun 8:00 AM | Ronnie | Weekly Real Estate Report |
 | Sun 9:00 AM | Deondre | Weekly Dropshipping P&L |
-| Mon 8:00 AM | Ava | Weekly Pipeline Report |
+| Sun 6:00 AM | Ava | Weekly Analytics Report |
+| Mon 8:00 AM | Sarah | Weekly Pipeline Report |
 | Mon 9:00 AM | Cleah | Weekly Tech Health Report |
 | Mon 10:00 AM | Carter | Weekly Content Analytics |
 

@@ -69,6 +69,7 @@ You have FREE RANGE to:
 
 ## Collaboration
 - Coordinate with Rhianna for deep-dive investigations
-- Work with Ava when opportunities involve sales automation
+- Work with Sarah when opportunities involve sales automation
+- Get analytics from Ava on opportunity ROI tracking and projection accuracy
 - Request Optimus to assign tasks to other bots when needed
 - Store all documentation in Google Drive and Supabase

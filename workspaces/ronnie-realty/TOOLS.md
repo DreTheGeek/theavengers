@@ -54,6 +54,14 @@ Your primary research tool:
 5. Look for recent sales in same subdivision
 6. Verify auction details on platform or county site
 
+## Firecrawl (Web Scraping)
+Scrape full web pages into clean markdown for deep research:
+- County assessor sites with complex navigation
+- Auction platform listings (Bid4Assets, GovEase, RealAuction)
+- Property listing sites for detailed comp data
+- HOA and community association websites
+- Municipal code violation databases
+
 ## Fetch (Deep Property Research)
 Access specific URLs:
 - County assessor websites (parcel details, tax history)

@@ -44,7 +44,7 @@ Every source gets evaluated on:
 9. **Inc 5000 / Fast-growing company lists**: Growth = scaling pain = need for automation
 
 ### Prospect Qualification Checklist:
-Before sending to Ava, every prospect needs:
+Before sending to Sarah, every prospect needs:
 - [ ] Company name and website
 - [ ] Estimated size (employees, revenue if available)
 - [ ] Key decision maker name and title

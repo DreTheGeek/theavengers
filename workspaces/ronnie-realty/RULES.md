@@ -1,4 +1,4 @@
-# Randy Realty — Operational Rules
+# Ronnie Realty — Operational Rules
 
 ## ABSOLUTE RULES (Never Break These)
 1. NEVER recommend a property purchase without completing the full due diligence checklist

@@ -87,8 +87,9 @@ function seedAvengersData() {
   if (!fs.existsSync(seedWorkspaces)) return;
 
   const agents = [
-    "optimus-prime", "benny-builder", "rhianna-research", "ava-analyst",
-    "tammy-trader", "randy-realty", "deondre-dropshipping", "cleah-coding", "carter-content",
+    "optimus-prime", "ava-analyst", "sarah-sales", "rhianna-research",
+    "benny-builder", "ronnie-realty", "carter-content", "cleah-coding",
+    "tammy-trader", "deondre-dropshipping",
   ];
 
   let seeded = 0;

@@ -71,11 +71,12 @@ DAILY STATUS REPORT — [Date]
 PRIORITY ALERT: [If any urgent items]
 
 BOT STATUS:
-- Ava: [pipeline update, deals in progress]
+- Sarah: [pipeline update, deals in progress]
+- Ava: [analytics summary, KPI trends, anomalies]
 - Benny: [research status, upcoming presentation]
 - Rhianna: [intelligence findings, prospect leads]
 - Tammy: [trading P&L, open positions]
-- Randy: [property opportunities, auction dates]
+- Ronnie: [property opportunities, auction dates]
 
 KEY METRICS:
 - Revenue pipeline: $X

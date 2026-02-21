@@ -35,6 +35,14 @@ Your main intelligence gathering tool.
 3. Cross-reference data points across 3+ sources
 4. Document source reliability for future reference
 
+## Firecrawl (Web Scraping)
+Scrape full web pages into clean markdown for deep research:
+- Competitor websites and detailed pricing pages
+- Industry reports and whitepapers (full text extraction)
+- Company about/team pages for prospect profiling
+- Government databases and regulatory filings
+- Market research aggregators and trend reports
+
 ## Fetch (Deep Research)
 Access specific URLs for:
 - Company websites and about pages

@@ -50,14 +50,26 @@
         }
       },
       {
-        "id": "benny-builder",
-        "workspace": "/data/workspace/benny-builder",
+        "id": "ava-analyst",
+        "workspace": "/data/workspace/ava-analyst",
         "model": {
-          "primary": "openrouter/deepseek/deepseek-reasoner",
+          "primary": "openrouter/deepseek/deepseek-chat",
           "fallbacks": [
-            "openrouter/anthropic/claude-sonnet-4",
+            "openrouter/deepseek/deepseek-reasoner",
             "openrouter/google/gemini-2.5-pro",
-            "openrouter/deepseek/deepseek-chat"
+            "openrouter/openai/gpt-4o"
+          ]
+        }
+      },
+      {
+        "id": "sarah-sales",
+        "workspace": "/data/workspace/sarah-sales",
+        "model": {
+          "primary": "openrouter/deepseek/deepseek-chat",
+          "fallbacks": [
+            "openrouter/openai/gpt-4o",
+            "openrouter/anthropic/claude-sonnet-4",
+            "openrouter/meta-llama/llama-4-scout"
           ]
         }
       },
@@ -74,20 +86,8 @@
         }
       },
       {
-        "id": "ava-analyst",
-        "workspace": "/data/workspace/ava-analyst",
-        "model": {
-          "primary": "openrouter/deepseek/deepseek-chat",
-          "fallbacks": [
-            "openrouter/openai/gpt-4o",
-            "openrouter/anthropic/claude-sonnet-4",
-            "openrouter/meta-llama/llama-4-scout"
-          ]
-        }
-      },
-      {
-        "id": "tammy-trader",
-        "workspace": "/data/workspace/tammy-trader",
+        "id": "benny-builder",
+        "workspace": "/data/workspace/benny-builder",
         "model": {
           "primary": "openrouter/deepseek/deepseek-reasoner",
           "fallbacks": [
@@ -98,8 +98,8 @@
         }
       },
       {
-        "id": "randy-realty",
-        "workspace": "/data/workspace/randy-realty",
+        "id": "ronnie-realty",
+        "workspace": "/data/workspace/ronnie-realty",
         "model": {
           "primary": "openrouter/deepseek/deepseek-chat",
           "fallbacks": [
@@ -110,13 +110,13 @@
         }
       },
       {
-        "id": "deondre-dropshipping",
-        "workspace": "/data/workspace/deondre-dropshipping",
+        "id": "carter-content",
+        "workspace": "/data/workspace/carter-content",
         "model": {
           "primary": "openrouter/deepseek/deepseek-chat",
           "fallbacks": [
             "openrouter/openai/gpt-4o",
-            "openrouter/google/gemini-2.0-flash-001",
+            "openrouter/anthropic/claude-sonnet-4",
             "openrouter/meta-llama/llama-4-maverick"
           ]
         }
@@ -134,13 +134,25 @@
         }
       },
       {
-        "id": "carter-content",
-        "workspace": "/data/workspace/carter-content",
+        "id": "tammy-trader",
+        "workspace": "/data/workspace/tammy-trader",
+        "model": {
+          "primary": "openrouter/deepseek/deepseek-reasoner",
+          "fallbacks": [
+            "openrouter/anthropic/claude-sonnet-4",
+            "openrouter/google/gemini-2.5-pro",
+            "openrouter/deepseek/deepseek-chat"
+          ]
+        }
+      },
+      {
+        "id": "deondre-dropshipping",
+        "workspace": "/data/workspace/deondre-dropshipping",
         "model": {
           "primary": "openrouter/deepseek/deepseek-chat",
           "fallbacks": [
             "openrouter/openai/gpt-4o",
-            "openrouter/anthropic/claude-sonnet-4",
+            "openrouter/google/gemini-2.0-flash-001",
             "openrouter/meta-llama/llama-4-maverick"
           ]
         }

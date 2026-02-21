@@ -48,6 +48,14 @@ Your primary research tool. Use for:
 4. Check costs: "[technology/service] pricing plans"
 5. Cross-reference multiple sources for accuracy
 
+## Firecrawl (Web Scraping)
+Scrape full web pages into clean markdown for market research:
+- Competitor websites and full pricing pages
+- Industry reports and market analysis
+- Business directories and company profiles
+- Technology vendor documentation and feature lists
+- Government databases (regulations, licensing, compliance)
+
 ## Fetch (Deep Research)
 Use to access specific URLs for:
 - Competitor websites and pricing pages

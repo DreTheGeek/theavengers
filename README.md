@@ -1,6 +1,6 @@
 # Deploy and Host The Avengers on Railway
 
-The Avengers is a fleet of 9 AI agents powered by OpenClaw that run 24/7 as a single Docker service. Each agent has domain expertise — sales, trading, research, content, code, real estate, e-commerce — coordinating through Supabase and accessible via Telegram.
+The Avengers is a fleet of 10 AI agents powered by OpenClaw that run 24/7 as a single Docker service. Each agent has domain expertise — sales, analytics, trading, research, content, code, real estate, e-commerce — coordinating through Supabase and accessible via Telegram.
 
 ## Architecture
 
@@ -21,7 +21,7 @@ Browser / Telegram
   LLM APIs via OpenRouter → 13 models
 ```
 
-The wrapper manages the OpenClaw lifecycle: onboarding → agent config patching → gateway startup → traffic proxying. On first deploy, 9 agent workspaces and 12 cron jobs are automatically seeded from the Docker image into the Railway volume.
+The wrapper manages the OpenClaw lifecycle: onboarding → agent config patching → gateway startup → traffic proxying. On first deploy, 10 agent workspaces and 12 cron jobs are automatically seeded from the Docker image into the Railway volume.
 
 ## Quick Start
 
@@ -31,32 +31,34 @@ The wrapper manages the OpenClaw lifecycle: onboarding → agent config patching
 4. Visit `https://your-app.up.railway.app/setup`
 5. Choose OpenRouter as auth provider, paste your API key
 6. Enter your Telegram bot token
-7. Click Run Setup — the 9 agents are automatically configured
+7. Click Run Setup — the 10 agents are automatically configured
 8. Open Telegram, message your bot, and start working
 
-## The 9 Agents
+## The 10 Agents
 
 | Agent | Role | Primary Model |
 |-------|------|--------------|
 | Optimus Prime | COO — coordination, daily reports, monitoring | DeepSeek Chat |
-| Benny Builder | Strategic Growth — weekly opportunity analysis | DeepSeek Reasoner |
+| Ava Analyst | Analytics — cross-bot KPIs, revenue tracking, data intelligence | DeepSeek Chat |
+| Sarah Sales | Revenue — sales pipeline, proposals, outreach | DeepSeek Chat |
 | Rhianna Research | Intelligence — prospect discovery, market research | DeepSeek Chat |
-| Ava Analyst | Revenue — sales pipeline, proposals, outreach | DeepSeek Chat |
-| Tammy Trader | Trading — stocks, crypto, forex, sports betting | DeepSeek Reasoner |
-| Randy Realty | Real Estate — tax deed auctions, property analysis | DeepSeek Chat |
-| Deondre Dropshipping | E-Commerce — product discovery, Shopify management | DeepSeek Chat |
-| Cleah Coding | CTO — code, GitHub, deployments, security | DeepSeek Reasoner |
+| Benny Business Builder | Strategic Growth — weekly opportunity analysis | DeepSeek Reasoner |
+| Ronnie Realty | Real Estate — tax deed auctions, property analysis | DeepSeek Chat |
 | Carter Content | Marketing — AI images/video, social media posting | DeepSeek Chat |
+| Cleah Coding | CTO — code, GitHub, deployments, security | DeepSeek Reasoner |
+| Tammy Trader | Trading — stocks, crypto, forex, sports betting | DeepSeek Reasoner |
+| Deondre Dropshipping | E-Commerce — product discovery, Shopify management | DeepSeek Chat |
 
 ## Dependencies
 
 ### Required
 - [OpenRouter](https://openrouter.ai/keys) — Multi-model LLM routing (13 models)
-- [Supabase](https://supabase.com/dashboard) — PostgreSQL database for all 9 agents
+- [Supabase](https://supabase.com/dashboard) — PostgreSQL database for all 10 agents
 - [Telegram BotFather](https://t.me/BotFather) — Primary communication channel
 
 ### Recommended
 - [Brave Search](https://api.search.brave.com/app/keys) — Web search for all agents
+- [Firecrawl](https://firecrawl.dev) — Web scraping for deep research
 - [Serper](https://serper.dev) — Google Search, Shopping, and Trends
 - [Replicate](https://replicate.com/account/api-tokens) — AI image and video generation
 - [Resend](https://resend.com/api-keys) — Email API for sales outreach
@@ -67,7 +69,7 @@ OpenClaw is built from source (pinned to a release tag) in a multi-stage Docker 
 
 Each agent has its own workspace with persona files (SOUL.md, AGENTS.md, KNOWLEDGE.md, TOOLS.md, RULES.md) and a default LLM model with 3 fallbacks. 12 cron jobs handle daily intelligence gathering, content posting, market analysis, and weekly reporting.
 
-State persists across redeploys via a Railway volume at `/data`. The setup wizard handles initial onboarding, and the 9-agent config is automatically patched in after setup completes.
+State persists across redeploys via a Railway volume at `/data`. The setup wizard handles initial onboarding, and the 10-agent config is automatically patched in after setup completes.
 
 ## Local Testing
 
@@ -90,7 +92,7 @@ docker run --rm -p 8080:8080 \
 Visit `https://your-app.up.railway.app/setup` and enter your `SETUP_PASSWORD`.
 
 **How do I add my Telegram bot?**
-Enter the bot token during setup. The 9 agents are pre-configured — Optimus Prime handles all Telegram DMs by default.
+Enter the bot token during setup. The 10 agents are pre-configured — Optimus Prime handles all Telegram DMs by default.
 
 **How do I approve Telegram pairing?**
 Use the "Approve pairing" button in the setup wizard, or the Debug Console.
