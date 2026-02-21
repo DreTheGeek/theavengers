@@ -5,10 +5,12 @@
 
 FROM node:20-slim
 
-# Install curl for health checks and tini for proper signal handling
+# Install system dependencies
+# curl: health checks, tini: signal handling, git: required by some npm packages
 RUN apt-get update && apt-get install -y --no-install-recommends \
       curl \
       tini \
+      git \
     && rm -rf /var/lib/apt/lists/*
 
 # Install OpenClaw and all MCP server packages globally
