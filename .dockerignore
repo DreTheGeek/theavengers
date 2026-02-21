@@ -18,14 +18,18 @@ credentials/
 # Documentation (not needed at runtime)
 README.md
 PLAN.md
+CLAUDE.md
 LICENSE
 CHANGELOG.md
+CONTRIBUTING.md
 
 # Development
 node_modules/
 .vscode/
 .idea/
 .claude/
+.tmpdata/
+vignesh07-*
 
 # OS files
 .DS_Store
@@ -38,10 +42,14 @@ logs/
 # Runtime data (created at runtime, not build time)
 data/
 
-# Supabase schema (not needed at runtime)
+# Supabase schema (not needed at runtime — run manually)
 supabase/
 
 # Docker files (prevent recursive context)
-Dockerfile
 docker-compose*.yml
 .dockerignore
+
+# Old files (no longer used)
+start.sh
+railway.json
+openclaw.json

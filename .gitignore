@@ -53,6 +53,7 @@ PLAN.md
 
 # --- Runtime data ---
 data/
+.tmpdata/
 
 # --- Docker ---
 docker-compose.override.yml
@@ -62,3 +63,4 @@ tmp/
 temp/
 *.tmp
 *.bak
+vignesh07-*
