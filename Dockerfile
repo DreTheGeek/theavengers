@@ -6,11 +6,12 @@
 FROM node:20-slim
 
 # Install system dependencies
-# curl: health checks, tini: signal handling, git: required by some npm packages
+# curl: health checks, tini: signal handling, git: npm git deps, ca-certificates: HTTPS
 RUN apt-get update && apt-get install -y --no-install-recommends \
       curl \
       tini \
       git \
+      ca-certificates \
     && rm -rf /var/lib/apt/lists/*
 
 # Force git to use HTTPS instead of SSH (no SSH keys in Docker build)
