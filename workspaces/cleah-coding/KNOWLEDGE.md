@@ -5,7 +5,7 @@
 ### Infrastructure:
 - **Runtime**: OpenClaw gateway on Railway (Docker container)
 - **Database**: Supabase (PostgreSQL) — 33 tables, RLS enabled
-- **LLMs**: OpenRouter → DeepSeek Chat, DeepSeek Reasoner, Llama 3.3 70B, Qwen 2.5 72B
+- **LLMs**: OpenRouter (multi-model access)
 - **Communication**: Telegram Bot API
 - **MCP Servers**: 16 pre-installed (Supabase, Brave, Serper, Firecrawl, Google Maps, GitHub, Replicate, Resend, Twitter, NewsAPI, Sequential Thinking, Fetch, Memory, Filesystem)
 - **Cron**: 12 scheduled jobs via OpenClaw cron engine

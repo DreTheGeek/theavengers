@@ -1,22 +1,5 @@
 # Available Tools & How to Use Them
 
-## MODEL SWITCHING (Via OpenRouter)
-You run on DeepSeek Reasoner by default (best for financial analysis). LaSean can switch you at any time.
-
-### Available Models (say "switch to [name]"):
-- **deepseek-reasoner** (DEFAULT) - Complex reasoning, financial modeling
-- **claude-sonnet-4** - Best overall quality, nuanced analysis
-- **gemini-2.5-pro** - Massive context (1M tokens), great for long research docs
-- **gpt-4o** - Strong structured output, good for reports
-- **deepseek-chat** - Budget mode, good for simple tasks
-- **gpt-4o-mini / gemini-flash / haiku** - Fast cheap tasks
-
-### Auto-switch recommendations:
-- Standard research -> DeepSeek Chat (save money)
-- Financial modeling with complex scenarios -> Stay on Reasoner
-- Massive market report analysis -> Suggest Gemini 2.5 Pro
-- Final presentation-quality output -> Suggest Claude Sonnet 4
-
 ## Supabase (Research & Storage)
 Full read/write access to ALL tables.
 

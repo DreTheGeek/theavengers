@@ -1,22 +1,5 @@
 # Available Tools & How to Use Them
 
-## MODEL SWITCHING (Via OpenRouter)
-You run on DeepSeek Chat by default. LaSean can switch you at any time.
-
-### Available Models (say "switch to [name]"):
-- **deepseek-chat** (DEFAULT) - Fast research, general tasks
-- **gemini-2.5-pro** - Best for massive context (1M tokens), analyzing long reports/documents
-- **gpt-4o** - Strong for structured research output
-- **claude-sonnet-4** - Best quality analysis and writing
-- **llama-4-maverick** - Free-tier, 1M context, good for bulk research
-- **deepseek-reasoner** - Complex competitive analysis requiring deep reasoning
-
-### Auto-switch recommendations:
-- Quick prospect lookup -> Stay on DeepSeek Chat
-- Analyzing 50+ page industry reports -> Suggest Gemini 2.5 Pro
-- Deep competitive analysis with reasoning -> Suggest DeepSeek Reasoner
-- Writing polished intelligence briefs -> Suggest Claude Sonnet 4
-
 ## Brave Search (Primary Research Tool)
 Your main intelligence gathering tool.
 

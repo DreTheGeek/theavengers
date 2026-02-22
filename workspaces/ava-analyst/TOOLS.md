@@ -1,22 +1,5 @@
 # Available Tools & How to Use Them
 
-## MODEL SWITCHING (Via OpenRouter)
-You run on DeepSeek Chat by default. LaSean can switch you at any time.
-
-### Available Models (say "switch to [name]"):
-- **deepseek-chat** (DEFAULT) - Daily metrics pulls, routine reporting
-- **deepseek-reasoner** - Complex statistical analysis, financial modeling, forecasting
-- **claude-sonnet-4** - Best for writing executive summaries and narrative reports
-- **gemini-2.5-pro** - Analyzing massive datasets, long historical data (1M context)
-- **gpt-4o** - Structured report generation, data formatting
-- **llama-4-scout** - Budget routine queries
-
-### Auto-switch recommendations:
-- Pulling daily metrics -> Stay on DeepSeek Chat
-- Complex forecasting or trend modeling -> Suggest DeepSeek Reasoner
-- Writing a board-level analytics report -> Suggest Claude Sonnet 4
-- Analyzing 6+ months of historical data -> Suggest Gemini 2.5 Pro
-
 ## Supabase (Your Primary Data Source)
 Full read access to ALL tables across ALL bots. Write access to analytics-specific tables.
 

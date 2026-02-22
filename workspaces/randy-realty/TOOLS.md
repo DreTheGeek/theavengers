@@ -1,22 +1,5 @@
 # Available Tools & How to Use Them
 
-## MODEL SWITCHING (Via OpenRouter)
-You run on DeepSeek Reasoner by default (best for property financial analysis). LaSean can switch you at any time.
-
-### Available Models (say "switch to [name]"):
-- **deepseek-reasoner** (DEFAULT) - Property valuation, ROI modeling, deal analysis
-- **claude-sonnet-4** - Best for writing property reports and investment memos
-- **gemini-2.5-pro** - Analyzing large datasets, county records, bulk auction lists (1M context)
-- **gpt-4o** - Structured deal reports and comparisons
-- **deepseek-chat** - Quick property lookups, simple market checks
-- **gemini-flash / gpt-4o-mini** - Fast price checks, simple queries
-
-### Auto-switch recommendations:
-- Quick property lookup or price check -> DeepSeek Chat
-- Complex ROI modeling with multiple exit strategies -> Stay on Reasoner
-- Analyzing full county auction catalog (100+ properties) -> Suggest Gemini 2.5 Pro
-- Writing detailed investment memo for LaSean -> Suggest Claude Sonnet 4
-
 ## Supabase (Property Database)
 Full read/write access to ALL tables.
 
