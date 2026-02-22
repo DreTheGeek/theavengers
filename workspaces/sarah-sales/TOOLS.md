@@ -22,12 +22,13 @@ Full read/write access to ALL tables.
 
 ### Key Tables:
 - `prospects` — All prospect records with research
-  - Columns: id, company_name, industry, decision_makers, pain_points, status, source, created_at
+  - Columns: id, name, company, email, phone, linkedin_url, website, industry, source, status (new/contacted/qualified/unqualified/converted/lost), notes, score, discovered_by, assigned_to, last_contacted_at, created_at
 - `pipeline` — Deal tracking through stages
-  - Columns: id, prospect_id, stage, deal_value, probability, next_action, next_action_date, notes
+  - Columns: id, prospect_id, prospect_name, company, stage (lead/contacted/meeting_set/proposal_sent/negotiation/closed_won/closed_lost), deal_value, probability, expected_close_date, source, notes, last_activity, last_activity_at, created_at
 - `proposals` — Proposal versions and status
-  - Columns: id, prospect_id, version, status, sent_date, response, follow_up_history
+  - Columns: id, pipeline_id, prospect_name, title, scope, deliverables (TEXT[]), price, currency, valid_until, status (draft/sent/viewed/accepted/rejected/expired), sent_at, response_at, notes, created_at
 - `deals` — Closed deals (won and lost) with outcomes
+  - Columns: id, pipeline_id, proposal_id, client_name, company, deal_value, recurring_value, deal_type (one_time/retainer/project/subscription), start_date, end_date, status (active/completed/cancelled/paused), notes, created_at
 
 ### Pipeline Stages:
 New Lead -> Researching -> Qualified -> Proposal Creation -> Proposal Sent -> Follow-Up -> Negotiation -> Closed Won/Lost

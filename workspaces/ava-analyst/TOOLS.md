@@ -27,7 +27,7 @@ Full read access to ALL tables across ALL bots. Write access to analytics-specif
 - `deals` — Closed deals with outcomes
 - `trades` — Tammy's trade history and P&L
 - `products` — Deondre's product catalog and margins
-- `orders` — E-commerce order data
+- `ecom_orders` — E-commerce order data
 - `daily_ecom_metrics` — Daily store KPIs
 - `content_calendar` — Carter's content schedule
 - `content_performance` — Post engagement data
@@ -39,11 +39,11 @@ Full read access to ALL tables across ALL bots. Write access to analytics-specif
 
 ### Tables You Write:
 - `analytics_reports` — Your generated reports
-  - Columns: id, report_type, period, data, insights, recommendations, created_at
+  - Columns: id, report_type, title, summary, report_data (JSONB), metrics (JSONB), insights (TEXT[]), recommendations (TEXT[]), period_start, period_end, bot_id, created_at
 - `kpi_snapshots` — Point-in-time metric captures
-  - Columns: id, metric_name, metric_value, bot_source, period, created_at
+  - Columns: id, snapshot_date, kpi_name, kpi_value, target_value, unit, category, trend (up/down/stable), notes, created_at
 - `anomaly_alerts` — Unusual patterns detected
-  - Columns: id, metric, expected_value, actual_value, severity, investigated, created_at
+  - Columns: id, metric_name, expected_value, actual_value, deviation_percent, severity (low/medium/high/critical), description, acknowledged, acknowledged_at, resolved, resolved_at, created_at
 
 ### Usage Pattern:
 1. Pull data from all bot tables daily

@@ -22,9 +22,11 @@ Full read/write access to ALL tables.
 
 ### Key Tables:
 - `business_opportunities` — Log all research with status, financials, recommendation
-  - Columns: id, name, industry, status, roi_estimate, confidence, go_nogo, created_at, presentation_date
-- `market_research` — Store market data, competitor analysis, pricing research
+  - Columns: id, title, description, category, market_size, investment_required, projected_revenue, projected_profit, timeline, risk_level (low/medium/high/very_high), status (research/analysis/recommended/approved/in_progress/completed/rejected), pros (TEXT[]), cons (TEXT[]), next_steps, created_at
 - `financial_models` — Detailed projections for each opportunity
+  - Columns: id, opportunity_id, model_name, assumptions (JSONB), revenue_projections (JSONB), cost_projections (JSONB), roi_percent, payback_months, break_even_units, notes, created_at
+- `research_findings` — Store market data, competitor analysis, pricing research (NOTE: use this instead of non-existent market_research table)
+  - Columns: id, bot_id, topic, summary, source, source_url, category, relevance_score, tags (TEXT[]), raw_data (JSONB), created_at
 
 ### Usage Pattern:
 1. Log every opportunity you discover (even if rejected)

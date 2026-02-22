@@ -22,13 +22,13 @@ Full read/write access to ALL tables.
 
 ### Key Tables:
 - `trades` — Every trade (paper and real)
-  - Columns: id, asset, direction, entry_price, exit_price, position_size, stop_loss, take_profit, status, pnl, pnl_pct, strategy, thesis, entry_date, exit_date
+  - Columns: id, asset, asset_type (stock/crypto/forex/options/futures), direction (long/short), entry_price, exit_price, stop_loss, take_profit, position_size, risk_amount, pnl, pnl_percent, status (open/closed/cancelled), thesis, setup_type, grade (A/B/C/D), post_analysis, entry_at, exit_at, created_at
 - `positions` — Currently open positions
-  - Columns: id, asset, direction, entry_price, current_price, unrealized_pnl, stop_loss, take_profit, opened_at
-- `performance_metrics` — Daily/weekly/monthly performance snapshots
-  - Columns: id, period, total_return, win_rate, profit_factor, max_drawdown, sharpe_ratio, date
-- `market_analysis` — Research notes and analysis
-- `sports_bets` — Sports betting records with odds and outcomes
+  - Columns: id, asset, asset_type, direction (long/short), entry_price, current_price, stop_loss, take_profit, position_size, unrealized_pnl, risk_percent, status (active/closed), opened_at, closed_at, created_at
+- `performance_metrics` — Daily performance snapshots
+  - Columns: id, report_date, total_pnl, win_count, loss_count, win_rate, avg_win, avg_loss, largest_win, largest_loss, total_trades, account_balance, drawdown_percent, notes, created_at
+- `sports_bets` — Sports betting records
+  - Columns: id, sport, league, event, bet_type, pick, odds, stake, potential_payout, result (pending/won/lost/push/cancelled), actual_payout, edge_percent, confidence, reasoning, bookmaker, event_date, settled_at, created_at
 
 ### Usage Pattern:
 1. Log EVERY trade decision (entry and exit) immediately

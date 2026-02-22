@@ -56,12 +56,14 @@ Access specific URLs for:
 Full read/write access to ALL tables.
 
 ### Key Tables:
-- `research_findings` — All research with citations, confidence, category
-  - Columns: id, category, finding, source, confidence, relevance, created_at
+- `research_findings` — All research with citations, category
+  - Columns: id, bot_id, topic, summary, source, source_url, category, relevance_score, tags (TEXT[]), raw_data (JSONB), created_at
 - `prospects` — Companies identified as potential clients
-  - Columns: id, company_name, industry, pain_points, decision_makers, status, assigned_to, created_at
+  - Columns: id, name, company, email, phone, linkedin_url, website, industry, source, status (new/contacted/qualified/unqualified/converted/lost), notes, score, discovered_by, assigned_to, last_contacted_at, created_at
 - `competitive_intel` — Competitor tracking
+  - Columns: id, competitor_name, category, finding, source, source_url, impact (low/medium/high/critical), action_needed, created_at
 - `market_trends` — Trend monitoring over time
+  - Columns: id, trend_name, category, description, data_points (JSONB), direction (up/down/stable/emerging/declining), relevance (low/medium/high), source, created_at
 
 ### Usage Pattern:
 1. Log every meaningful finding (build institutional knowledge)

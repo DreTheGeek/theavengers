@@ -22,12 +22,13 @@ Full read/write access to ALL tables.
 
 ### Key Tables:
 - `tax_deed_sales` — Upcoming auction tracking
-  - Columns: id, county, state, auction_date, registration_deadline, format, properties_count, url, notes
+  - Columns: id, county, state, parcel_id, property_address, auction_date, opening_bid, final_bid, assessed_value, market_value, property_type, acreage, status (upcoming/watching/bidding/won/lost/skipped), notes, liens (JSONB), due_diligence (JSONB), created_at
 - `properties` — Individual property records with full analysis
-  - Columns: id, address, parcel_id, type, auction_id, min_bid, est_market_value, equity_spread, repair_est, status, confidence, recommendation
-- `market_analysis` — Regional market data and trends
-- `portfolio` — Acquired properties and performance tracking
+  - Columns: id, address, city, state, zip, property_type, bedrooms, bathrooms, sqft, lot_size, year_built, list_price, estimated_value, arv, repair_cost, potential_rent, cap_rate, cash_on_cash, source, source_url, status (research/analyzing/offer_pending/under_contract/owned/sold/passed), notes, created_at
 - `property_comps` — Comparable sales data
+  - Columns: id, property_id, comp_address, sale_price, sale_date, sqft, price_per_sqft, bedrooms, bathrooms, distance_miles, similarity_score, source, created_at
+- `portfolio` — Acquired properties and performance tracking
+  - Columns: id, property_id, address, purchase_price, purchase_date, current_value, monthly_rent, monthly_expenses, mortgage_balance, equity, roi_percent, status (active/vacant/rehab/for_sale/sold), notes, created_at
 
 ### Usage Pattern:
 1. Track ALL upcoming tax deed auctions across monitored states

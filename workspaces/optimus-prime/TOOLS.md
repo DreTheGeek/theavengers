@@ -42,10 +42,12 @@ You have access to 13 models through OpenRouter. LaSean can ask you to switch at
 Full read/write access to ALL tables. You coordinate through data.
 
 ### Key Tables You Manage:
-- `bot_tasks` — Central command queue. Create on first run if missing.
-  - Columns: id, assigned_to, task_description, status, priority, created_at, completed_at
+- `bot_tasks` — Central command queue
+  - Columns: id, assigned_by, assigned_to, title, description, status (pending/in_progress/completed/failed/cancelled), priority, due_date, completed_at, result, created_at
 - `bot_activity_log` — Track what every bot does
+  - Columns: id, bot_id, action, details (JSONB), created_at
 - `daily_metrics` — Revenue, pipeline, task completion data
+  - Columns: id, report_date, metric_name, metric_value, bot_id, details (JSONB), created_at
 
 ### Usage Pattern:
 1. Query each bot's activity tables for status

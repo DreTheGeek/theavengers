@@ -40,13 +40,13 @@ Full read/write access to ALL tables.
 
 ### Key Tables:
 - `dev_tasks` — Development task tracking
-  - Columns: id, title, description, repo, priority, status, assigned_to, estimated_hours, actual_hours, created_at, completed_at
+  - Columns: id, title, description, task_type (feature/bugfix/refactor/infrastructure/security/documentation), priority (low/medium/high/critical), status (backlog/todo/in_progress/review/done/cancelled), assigned_to, repo, branch, pr_url, estimated_hours, actual_hours, completed_at, notes, created_at
 - `bug_reports` — Bug tracking with severity
-  - Columns: id, title, description, repo, severity, status, steps_to_reproduce, root_cause, fix_description, created_at
+  - Columns: id, title, description, severity (low/medium/high/critical), status (open/investigating/fixing/resolved/wont_fix), reported_by, assigned_to, repo, steps_to_reproduce, expected_behavior, actual_behavior, fix_description, resolved_at, created_at
 - `deployments` — Deployment history
-  - Columns: id, service, platform, status, version, deployed_at, notes
+  - Columns: id, service, environment (development/staging/production), version, commit_hash, deployed_by, status (deploying/success/failed/rolled_back), changes (TEXT[]), duration_seconds, notes, deployed_at, created_at
 - `tech_decisions` — Architecture Decision Records
-  - Columns: id, title, context, decision, consequences, status, date
+  - Columns: id, title, context, decision, alternatives (TEXT[]), consequences (TEXT[]), status (proposed/accepted/deprecated/superseded), decided_by, superseded_by, created_at
 
 ### Usage Pattern:
 1. Log every task with estimates and actual time

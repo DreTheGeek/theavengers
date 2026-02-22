@@ -22,14 +22,13 @@ Full read/write access to ALL tables.
 
 ### Key Tables:
 - `products` — Master product catalog with full research data
-  - Columns: id, name, category, source_url, supplier, product_cost, shipping_cost, selling_price, margin_pct, status, confidence, demand_score, competition_level, created_at
+  - Columns: id, name, category, supplier, supplier_url, cost, selling_price, margin_percent, shipping_cost, shipping_time, platform, store_url, status (research/testing/scaling/winner/declining/dead/paused), wow_factor, problem_solver, daily_ad_spend, roas, conversion_rate, total_orders, total_revenue, notes, tags (TEXT[]), created_at
 - `suppliers` — Vetted supplier database
-  - Columns: id, name, platform, rating, avg_shipping_days, defect_rate, contact, notes
-- `orders` — Order tracking and fulfillment
-  - Columns: id, product_id, order_date, customer, revenue, cogs, profit, fulfillment_status, tracking_number
-- `product_pipeline` — Products by stage (Discovered → Researching → Validated → Testing → Scaling → Killed)
-- `daily_ecom_metrics` — Daily store KPIs (revenue, orders, AOV, conversion_rate, ad_spend, profit)
-- `competitor_stores` — Competitor tracking with product counts, pricing trends
+  - Columns: id, name, platform, contact_email, contact_phone, website, country, shipping_speed, quality_rating, communication_rating, price_rating, moq, payment_terms, branding_available, notes, status (active/inactive/blacklisted), created_at
+- `ecom_orders` — Order tracking and fulfillment (NOTE: table name is ecom_orders, NOT orders)
+  - Columns: id, order_number, product_id, product_name, quantity, revenue, cogs, ad_cost, platform_fee, net_profit, customer_email, fulfillment_status (unfulfilled/processing/shipped/delivered/returned/refunded), tracking_number, order_date, shipped_at, delivered_at, created_at
+- `daily_ecom_metrics` — Daily store KPIs
+  - Columns: id, report_date, total_revenue, total_orders, total_ad_spend, total_cogs, net_profit, avg_order_value, conversion_rate, roas, top_product, visitors, refunds, refund_amount, notes, created_at
 
 ### Usage Pattern:
 1. Log EVERY product you discover (even rejects — document why)

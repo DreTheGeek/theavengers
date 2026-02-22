@@ -107,15 +107,13 @@ Full read/write access to ALL tables.
 
 ### Key Tables:
 - `content_calendar` — Scheduled content with platform, status, posting time
-  - Columns: id, platform, format, caption, image_prompt, video_script, hashtags, scheduled_time, status, posted_url, created_at
+  - Columns: id, title, content_type (post/video/reel/story/blog/newsletter/thread/carousel/podcast/infographic), platform (twitter/instagram/tiktok/linkedin/youtube/facebook/blog/newsletter/threads), status (idea/drafting/ready/scheduled/published/cancelled), content, hashtags (TEXT[]), media_urls (TEXT[]), scheduled_for, published_at, publish_url, notes, created_at
 - `content_performance` — Post-publish analytics
-  - Columns: id, content_id, platform, views, likes, comments, shares, saves, engagement_rate, measured_at
+  - Columns: id, content_id, platform, post_url, impressions, reach, likes, comments, shares, saves, clicks, engagement_rate, followers_gained, measured_at, created_at
 - `content_assets` — Generated images and videos library
-  - Columns: id, type, prompt, url, platform_optimized_for, used_in, created_at
+  - Columns: id, name, asset_type (image/video/audio/document/template/graphic), url, file_path, description, tags (TEXT[]), used_in (UUID[]), created_at
 - `trending_content` — Tracked trends and viral formats
-  - Columns: id, platform, trend_type, description, example_url, peak_date, our_angle, status
-- `brand_pages` — All managed social media accounts and credentials
-  - Columns: id, platform, page_name, account_id, follower_count, last_post_date
+  - Columns: id, platform, topic, description, trending_score, source_url, opportunity, acted_on (BOOLEAN), expires_at, discovered_at, created_at
 
 ### Usage Pattern:
 1. Plan content in content_calendar — always stay 3-7 days ahead
