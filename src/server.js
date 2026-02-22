@@ -89,31 +89,53 @@ const GATEWAY_TARGET = `http://${INTERNAL_GATEWAY_HOST}:${INTERNAL_GATEWAY_PORT}
 const OPENCLAW_ENTRY = process.env.OPENCLAW_ENTRY?.trim() || "/openclaw/dist/entry.js";
 const OPENCLAW_NODE = process.env.OPENCLAW_NODE?.trim() || "node";
 
-// --- The Avengers: pre-seeded 9-agent configuration ---
+// --- The Avengers: pre-seeded 10-agent configuration ---
 const SEED_DIR = path.join(process.cwd(), "seed");
+
+const AVENGERS_AGENTS = [
+  "optimus-prime", "ava-analyst", "sarah-sales", "rhianna-research",
+  "benny-builder", "randy-realty", "carter-content", "cleah-coding",
+  "tammy-trader", "deondre-dropshipping",
+];
 
 function seedAvengersData() {
   const seedWorkspaces = path.join(SEED_DIR, "workspaces");
   if (!fs.existsSync(seedWorkspaces)) return;
 
-  const agents = [
-    "optimus-prime", "ava-analyst", "sarah-sales", "rhianna-research",
-    "benny-builder", "randy-realty", "carter-content", "cleah-coding",
-    "tammy-trader", "deondre-dropshipping",
-  ];
-
   let seeded = 0;
-  for (const agent of agents) {
+  let updated = 0;
+  for (const agent of AVENGERS_AGENTS) {
     const src = path.join(seedWorkspaces, agent);
+    if (!fs.existsSync(src)) continue;
+
     const dest = path.join(WORKSPACE_DIR, agent);
-    if (fs.existsSync(src) && !fs.existsSync(dest)) {
+    if (!fs.existsSync(dest)) {
+      // First run: copy entire workspace
       fs.cpSync(src, dest, { recursive: true });
       seeded++;
+    } else {
+      // Existing workspace: update persona files (SOUL.md, AGENTS.md, etc.)
+      // but preserve any runtime files the agent created (notes, memory, etc.)
+      const personaFiles = ["SOUL.md", "AGENTS.md", "TOOLS.md", "RULES.md", "KNOWLEDGE.md", "USER.md"];
+      for (const file of personaFiles) {
+        const srcFile = path.join(src, file);
+        const destFile = path.join(dest, file);
+        if (fs.existsSync(srcFile)) {
+          const srcContent = fs.readFileSync(srcFile, "utf8");
+          let destContent = "";
+          try { destContent = fs.readFileSync(destFile, "utf8"); } catch {}
+          if (srcContent !== destContent) {
+            fs.copyFileSync(srcFile, destFile);
+            updated++;
+          }
+        }
+      }
     }
   }
-  if (seeded > 0) console.log(`[avengers] Seeded ${seeded} agent workspace(s) to ${WORKSPACE_DIR}`);
+  if (seeded > 0) console.log(`[avengers] Seeded ${seeded} new agent workspace(s) to ${WORKSPACE_DIR}`);
+  if (updated > 0) console.log(`[avengers] Updated ${updated} persona file(s) in existing workspaces`);
 
-  // Seed cron jobs
+  // Seed cron jobs (only if missing)
   const cronSrc = path.join(SEED_DIR, "cron", "jobs.json");
   const cronDir = path.join(STATE_DIR, "cron");
   const cronDest = path.join(cronDir, "jobs.json");
@@ -141,12 +163,55 @@ function patchAvengersConfig() {
       current[key] = value;
     }
 
+    // CRITICAL: Force gateway.auth.token to use env var substitution.
+    // Without this, the onboarding wizard hardcodes a random token that
+    // conflicts with the wrapper's --token CLI arg, causing "token mismatch".
+    if (!current.gateway) current.gateway = {};
+    if (!current.gateway.auth) current.gateway.auth = {};
+    current.gateway.auth.mode = "token";
+    current.gateway.auth.token = "${OPENCLAW_GATEWAY_TOKEN}";
+    current.gateway.mode = "local";
+    current.gateway.bind = "loopback";
+    current.gateway.port = INTERNAL_GATEWAY_PORT;
+    current.gateway.trustedProxies = ["127.0.0.1"];
+    // Remove fields that conflict with wrapper-managed gateway
+    delete current.gateway.remote;
+    delete current.gateway.tailscale;
+
     fs.writeFileSync(cfgPath, JSON.stringify(current, null, 2), { encoding: "utf8", mode: 0o600 });
-    extra += "\n[avengers] Patched config with 9 agents, models, bindings, session, cron, tools\n";
+    extra += "\n[avengers] Patched config with 10 agents, models, bindings, gateway auth\n";
   } catch (err) {
     extra += `\n[avengers] Config patch failed: ${String(err)}\n`;
   }
   return extra;
+}
+
+// Ensure gateway.auth.token uses env var substitution in existing configs.
+// This fixes deployments where the wizard wrote a hardcoded token.
+function ensureGatewayTokenEnvVar() {
+  const cfgPath = configPath();
+  if (!fs.existsSync(cfgPath)) return;
+
+  try {
+    const current = JSON.parse(fs.readFileSync(cfgPath, "utf8"));
+    const authToken = current?.gateway?.auth?.token;
+
+    // If token is hardcoded (not an env var reference), fix it
+    if (authToken && !authToken.startsWith("${")) {
+      console.log("[avengers] Fixing hardcoded gateway.auth.token → ${OPENCLAW_GATEWAY_TOKEN}");
+      current.gateway.auth.token = "${OPENCLAW_GATEWAY_TOKEN}";
+      // Also clean up remote.token if it's hardcoded
+      if (current.gateway?.remote?.token && !current.gateway.remote.token.startsWith("${")) {
+        delete current.gateway.remote;
+      }
+      if (current.gateway?.tailscale) {
+        delete current.gateway.tailscale;
+      }
+      fs.writeFileSync(cfgPath, JSON.stringify(current, null, 2), { encoding: "utf8", mode: 0o600 });
+    }
+  } catch {
+    // best-effort
+  }
 }
 
 function clawArgs(args) {
@@ -1456,11 +1521,18 @@ const server = app.listen(PORT, "0.0.0.0", async () => {
     console.warn("[wrapper] WARNING: SETUP_PASSWORD is not set; /setup will error.");
   }
 
-  // Seed Avengers workspace files + cron jobs on first run.
+  // Seed Avengers workspace files + cron jobs, and update persona files.
   try {
     seedAvengersData();
   } catch (err) {
     console.warn(`[avengers] seed failed (continuing): ${String(err)}`);
+  }
+
+  // Fix hardcoded gateway tokens in existing configs (one-time migration).
+  try {
+    ensureGatewayTokenEnvVar();
+  } catch (err) {
+    console.warn(`[avengers] token fix failed (continuing): ${String(err)}`);
   }
 
   // Optional operator hook to install/persist extra tools under /data.
