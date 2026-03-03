@@ -23,11 +23,12 @@
         "openrouter/qwen/qwen-2.5-72b-instruct": {},
         "openrouter/mistralai/mistral-large": {}
       },
+      "maxOutputTokens": 4096,
       "memorySearch": {
         "enabled": true
       },
       "compaction": {
-        "mode": "safeguard"
+        "mode": "rolling"
       },
       "sandbox": {
         "mode": "off"
