@@ -182,6 +182,12 @@ function patchAvengersConfig() {
     delete current.gateway.remote;
     delete current.gateway.tailscale;
 
+    // Clean up keys that are invalid in this OpenClaw version
+    if (current.agents && current.agents.defaults) {
+      delete current.agents.defaults.maxOutputTokens;
+      delete current.agents.defaults.compaction;
+    }
+
     fs.writeFileSync(cfgPath, JSON.stringify(current, null, 2), { encoding: "utf8", mode: 0o600 });
     extra += "\n[avengers] Patched config with 5 agents, models, bindings, gateway auth\n";
   } catch (err) {
