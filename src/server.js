@@ -232,7 +232,11 @@ function resolveConfigCandidates() {
   const explicit = process.env.OPENCLAW_CONFIG_PATH?.trim();
   if (explicit) return [explicit];
 
-  return [path.join(STATE_DIR, "openclaw.json")];
+  return [
+    path.join(STATE_DIR, "openclaw.json"),
+    "/data/.clawdbot/openclaw.json",
+    path.join(STATE_DIR, "clawdbot.json"),
+  ];
 }
 
 function configPath() {
