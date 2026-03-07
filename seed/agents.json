@@ -11,12 +11,8 @@
         "claude-sonnet-4-20250514": {},
         "claude-haiku-4-5-20251001": {}
       },
-      "maxOutputTokens": 4096,
       "memorySearch": {
         "enabled": true
-      },
-      "compaction": {
-        "mode": "rolling"
       },
       "sandbox": {
         "mode": "off"
