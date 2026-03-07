@@ -2,26 +2,14 @@
   "agents": {
     "defaults": {
       "model": {
-        "primary": "openrouter/deepseek/deepseek-chat",
+        "primary": "claude-sonnet-4-20250514",
         "fallbacks": [
-          "openrouter/meta-llama/llama-3.3-70b-instruct",
-          "openrouter/qwen/qwen-2.5-72b-instruct"
+          "claude-haiku-4-5-20251001"
         ]
       },
       "models": {
-        "openrouter/deepseek/deepseek-chat": {},
-        "openrouter/deepseek/deepseek-reasoner": {},
-        "openrouter/anthropic/claude-sonnet-4": {},
-        "openrouter/anthropic/claude-haiku-4": {},
-        "openrouter/openai/gpt-4o": {},
-        "openrouter/openai/gpt-4o-mini": {},
-        "openrouter/google/gemini-2.5-pro": {},
-        "openrouter/google/gemini-2.0-flash-001": {},
-        "openrouter/meta-llama/llama-4-maverick": {},
-        "openrouter/meta-llama/llama-4-scout": {},
-        "openrouter/meta-llama/llama-3.3-70b-instruct": {},
-        "openrouter/qwen/qwen-2.5-72b-instruct": {},
-        "openrouter/mistralai/mistral-large": {}
+        "claude-sonnet-4-20250514": {},
+        "claude-haiku-4-5-20251001": {}
       },
       "maxOutputTokens": 4096,
       "memorySearch": {
@@ -35,141 +23,75 @@
       },
       "userTimezone": "America/New_York"
     },
-
     "list": [
       {
-        "id": "optimus-prime",
-        "default": true,
-        "workspace": "/data/workspace/optimus-prime",
+        "id": "ava",
+        "workspace": "/data/workspace/ava",
         "model": {
-          "primary": "openrouter/deepseek/deepseek-chat",
+          "primary": "claude-sonnet-4-20250514",
           "fallbacks": [
-            "openrouter/google/gemini-2.0-flash-001",
-            "openrouter/meta-llama/llama-4-scout",
-            "openrouter/openai/gpt-4o-mini"
+            "claude-haiku-4-5-20251001"
           ]
         }
       },
       {
-        "id": "ava-analyst",
-        "workspace": "/data/workspace/ava-analyst",
+        "id": "steve",
+        "workspace": "/data/workspace/steve",
         "model": {
-          "primary": "openrouter/deepseek/deepseek-chat",
+          "primary": "claude-sonnet-4-20250514",
           "fallbacks": [
-            "openrouter/deepseek/deepseek-reasoner",
-            "openrouter/google/gemini-2.5-pro",
-            "openrouter/openai/gpt-4o"
+            "claude-haiku-4-5-20251001"
           ]
         }
       },
       {
-        "id": "sarah-sales",
-        "workspace": "/data/workspace/sarah-sales",
+        "id": "tony",
+        "workspace": "/data/workspace/tony",
         "model": {
-          "primary": "openrouter/deepseek/deepseek-chat",
+          "primary": "claude-sonnet-4-20250514",
           "fallbacks": [
-            "openrouter/openai/gpt-4o",
-            "openrouter/anthropic/claude-sonnet-4",
-            "openrouter/meta-llama/llama-4-scout"
+            "claude-haiku-4-5-20251001"
           ]
         }
       },
       {
-        "id": "rhianna-research",
-        "workspace": "/data/workspace/rhianna-research",
+        "id": "natasha",
+        "workspace": "/data/workspace/natasha",
         "model": {
-          "primary": "openrouter/deepseek/deepseek-chat",
+          "primary": "claude-sonnet-4-20250514",
           "fallbacks": [
-            "openrouter/google/gemini-2.5-pro",
-            "openrouter/openai/gpt-4o",
-            "openrouter/meta-llama/llama-4-maverick"
+            "claude-haiku-4-5-20251001"
           ]
         }
       },
       {
-        "id": "benny-builder",
-        "workspace": "/data/workspace/benny-builder",
+        "id": "jarvis",
+        "workspace": "/data/workspace/jarvis",
         "model": {
-          "primary": "openrouter/deepseek/deepseek-reasoner",
+          "primary": "claude-sonnet-4-20250514",
           "fallbacks": [
-            "openrouter/anthropic/claude-sonnet-4",
-            "openrouter/google/gemini-2.5-pro",
-            "openrouter/deepseek/deepseek-chat"
-          ]
-        }
-      },
-      {
-        "id": "randy-realty",
-        "workspace": "/data/workspace/randy-realty",
-        "model": {
-          "primary": "openrouter/deepseek/deepseek-chat",
-          "fallbacks": [
-            "openrouter/openai/gpt-4o",
-            "openrouter/google/gemini-2.0-flash-001",
-            "openrouter/meta-llama/llama-4-scout"
-          ]
-        }
-      },
-      {
-        "id": "carter-content",
-        "workspace": "/data/workspace/carter-content",
-        "model": {
-          "primary": "openrouter/deepseek/deepseek-chat",
-          "fallbacks": [
-            "openrouter/openai/gpt-4o",
-            "openrouter/anthropic/claude-sonnet-4",
-            "openrouter/meta-llama/llama-4-maverick"
-          ]
-        }
-      },
-      {
-        "id": "cleah-coding",
-        "workspace": "/data/workspace/cleah-coding",
-        "model": {
-          "primary": "openrouter/deepseek/deepseek-reasoner",
-          "fallbacks": [
-            "openrouter/anthropic/claude-sonnet-4",
-            "openrouter/google/gemini-2.5-pro",
-            "openrouter/openai/gpt-4o"
-          ]
-        }
-      },
-      {
-        "id": "tammy-trader",
-        "workspace": "/data/workspace/tammy-trader",
-        "model": {
-          "primary": "openrouter/deepseek/deepseek-reasoner",
-          "fallbacks": [
-            "openrouter/anthropic/claude-sonnet-4",
-            "openrouter/google/gemini-2.5-pro",
-            "openrouter/deepseek/deepseek-chat"
-          ]
-        }
-      },
-      {
-        "id": "deondre-dropshipping",
-        "workspace": "/data/workspace/deondre-dropshipping",
-        "model": {
-          "primary": "openrouter/deepseek/deepseek-chat",
-          "fallbacks": [
-            "openrouter/openai/gpt-4o",
-            "openrouter/google/gemini-2.0-flash-001",
-            "openrouter/meta-llama/llama-4-maverick"
+            "claude-haiku-4-5-20251001"
           ]
         }
       }
     ]
   },
-
   "tools": {
-    "allow": ["*"],
-    "deny": ["group:runtime"]
+    "allow": [
+      "*"
+    ],
+    "deny": [
+      "group:runtime"
+    ]
   },
-
   "bindings": [
-    { "agentId": "optimus-prime", "match": { "channel": "telegram" } }
+    {
+      "agentId": "${BOT_AGENT_ID}",
+      "match": {
+        "channel": "telegram"
+      }
+    }
   ],
-
   "session": {
     "dmScope": "per-account-channel-peer",
     "reset": {
@@ -177,12 +99,10 @@
       "atHour": 4
     }
   },
-
   "cron": {
     "enabled": true,
     "store": "/data/cron/jobs.json"
   },
-
   "channels": {
     "telegram": {
       "enabled": true,
@@ -192,7 +112,6 @@
       "streamMode": "partial"
     }
   },
-
   "gateway": {
     "port": 18789,
     "mode": "local",
@@ -201,9 +120,10 @@
       "mode": "token",
       "token": "${OPENCLAW_GATEWAY_TOKEN}"
     },
-    "trustedProxies": ["127.0.0.1"]
+    "trustedProxies": [
+      "127.0.0.1"
+    ]
   },
-
   "plugins": {
     "entries": {
       "telegram": {
@@ -211,7 +131,6 @@
       }
     }
   },
-
   "logging": {
     "level": "info"
   }

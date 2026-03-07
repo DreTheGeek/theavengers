@@ -89,14 +89,18 @@ const GATEWAY_TARGET = `http://${INTERNAL_GATEWAY_HOST}:${INTERNAL_GATEWAY_PORT}
 const OPENCLAW_ENTRY = process.env.OPENCLAW_ENTRY?.trim() || "/openclaw/dist/entry.js";
 const OPENCLAW_NODE = process.env.OPENCLAW_NODE?.trim() || "node";
 
-// --- The Avengers: pre-seeded 10-agent configuration ---
+// --- The Avengers: pre-seeded 5-agent configuration ---
 const SEED_DIR = path.join(process.cwd(), "seed");
 
 const AVENGERS_AGENTS = [
-  "optimus-prime", "ava-analyst", "sarah-sales", "rhianna-research",
-  "benny-builder", "randy-realty", "carter-content", "cleah-coding",
-  "tammy-trader", "deondre-dropshipping",
+  "ava", "steve", "tony", "natasha", "jarvis",
 ];
+
+// Each Railway service sets BOT_AGENT_ID to identify which bot it runs.
+// Defaults to "ava" for backward compatibility.
+if (!process.env.BOT_AGENT_ID) {
+  process.env.BOT_AGENT_ID = "ava";
+}
 
 function seedAvengersData() {
   const seedWorkspaces = path.join(SEED_DIR, "workspaces");
@@ -179,7 +183,7 @@ function patchAvengersConfig() {
     delete current.gateway.tailscale;
 
     fs.writeFileSync(cfgPath, JSON.stringify(current, null, 2), { encoding: "utf8", mode: 0o600 });
-    extra += "\n[avengers] Patched config with 10 agents, models, bindings, gateway auth\n";
+    extra += "\n[avengers] Patched config with 5 agents, models, bindings, gateway auth\n";
   } catch (err) {
     extra += `\n[avengers] Config patch failed: ${String(err)}\n`;
   }
